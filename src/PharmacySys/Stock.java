@@ -12,7 +12,7 @@ public class Stock {
 	}
 
 	public static ArrayList<Item> getProductList() {
-		return products;
+		return new ArrayList<>(products); // Returning a copy to protect the original list
 
 	}
 

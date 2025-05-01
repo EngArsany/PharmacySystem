@@ -21,7 +21,8 @@ public abstract class Item {
 	//creating a custom exception class for handling if item is not found
 	public static class ItemNotFoundException extends Exception {
 
-		public ItemNotFoundException(String string) {
+		public ItemNotFoundException(String message) {
+			super(message);
 		}
 	}
 

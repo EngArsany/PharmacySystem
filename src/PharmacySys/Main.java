@@ -15,7 +15,6 @@ public class Main {
 		// Print product list using describe() methods
 		System.out.println("=========== PHARMACY STOCK ITEMS ============");
 		System.out.println("=============================================");
-
 		for (Item item : productList) {
 			item.describe();  // This will call the appropriate describe() for each item type
 			System.out.println("-----------------------------");
@@ -59,7 +58,6 @@ public class Main {
 		// Print product list after ordering order number 1
 		System.out.println("=========== PHARMACY STOCK ITEMS ============");
 		System.out.println("=============================================");
-
 		for (Item item : productList) {
 			item.describe();  // This will call the appropriate describe() for each item type
 			System.out.println("-----------------------------");

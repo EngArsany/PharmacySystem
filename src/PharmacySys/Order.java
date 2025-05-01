@@ -1,15 +1,20 @@
 package PharmacySys;
 
 public class Order {
+
 	private Item item;
 	private double OrderPrice;
 	private int quantity;
 
-	public Order(String itemName, int quantity) throws Item.InsufficientStockException { // declared that it will throw an exception
+	public Order(String itemName, int quantity) throws Item.InsufficientStockException, Item.ItemNotFoundException { // declared that it will throw an exception
 
 		// Add exception handling if the item is not in the list (stock)
-		// Create new order
 		this.item = Stock.findItemByName(itemName);
+		if (this.item == null) {
+			throw new Item.ItemNotFoundException("Item with name '" + itemName + "' not found in stock.");
+		}
+
+		// Create new order
 		this.quantity = quantity;
 		this.OrderPrice = item.getPrice() * quantity;
 

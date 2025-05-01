@@ -3,10 +3,20 @@ package PharmacySys;
 import java.util.ArrayList;
 
 public class Stock {
+
 	private static ArrayList<Item> products;
 
 	public Stock() {
 		products = new ArrayList<>();
+		initializeProducts();
+	}
+
+	public static ArrayList<Item> getProductList() {
+		return products;
+
+	}
+
+	private void initializeProducts() {
 		// Morphine
 		products.add(new Morphine("12"));
 
@@ -28,21 +38,16 @@ public class Stock {
 		// Skincare
 		products.add(new Skincare(22.00, "SC001", "GlowGuard", 16, 35, "Female", "sun protection"));
 		products.add(new Skincare(18.75, "SC002", "ClearTone", 14, 50, "Unisex", "cleansing"));
-	}
 
-	public static ArrayList<Item> getProductList() {
-		return products;
+	} // for better readability
 
-	}
-
-	public static Item findItemByName(String name) {
+	public static Item findItemByName(String name) throws Item.ItemNotFoundException {
 		for (Item product : products) {
-			if (product.getName().equalsIgnoreCase(name))
+			if (product.getName().equalsIgnoreCase(name)) {
 				return product;
+			}
 		}
-
-		return null; // Add exception handling here
-
+		throw new Item.ItemNotFoundException("Item '" + name + "' not found in stock"); // handled here and in order class also
 	}
 
 }

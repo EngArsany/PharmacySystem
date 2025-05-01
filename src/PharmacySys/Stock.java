@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Stock {
 
-	private static ArrayList<Item> products;
+	public static ArrayList<Item> products;
 
 	public Stock() {
 		products = new ArrayList<>();
@@ -13,7 +13,6 @@ public class Stock {
 
 	public static ArrayList<Item> getProductList() {
 		return new ArrayList<>(products); // Returning a copy to protect the original list
-
 	}
 
 	private void initializeProducts() {

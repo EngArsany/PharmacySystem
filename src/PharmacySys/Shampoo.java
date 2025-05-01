@@ -2,7 +2,7 @@ package PharmacySys;
 
 public class Shampoo extends PersonalCare implements SuitableForChildren {
 
-	String flavor; // Mint, Coal, Jasmine.. etc.
+	private String flavor; // Mint, Coal, Jasmine.. etc.
 
 	public Shampoo(double price, String ID, String name, int minimumAge, int stock, String gender, String flavor) {
 		super(price, ID, name, minimumAge, stock, gender);

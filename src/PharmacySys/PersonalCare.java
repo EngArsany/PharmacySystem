@@ -2,7 +2,7 @@ package PharmacySys;
 
 public abstract class PersonalCare extends Item {
 
-	public String gender;
+	private String gender;
 
 	public PersonalCare(double price, String ID, String name, int minimumAge, int stock, String gender) {
 		super(price, ID, name, minimumAge, stock);

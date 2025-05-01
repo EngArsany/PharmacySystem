@@ -8,13 +8,28 @@ import java.time.LocalDate;
 public class Main {
 
 	public static void main(String[] args) {
-		new Stock();
-		List<Item> productList = Stock.getProductList();
+		//new Stock();
+		//List<Item> productList = Stock.getProductList();
+
+		// Initialize stock
+		Stock pharmacyStock = new Stock();
+
+		// Get and print product list
+		List<Item> productList = pharmacyStock.getProductList();
+		System.out.println("===== Pharmacy Products =====");
+		for (Item item : productList) {
+			System.out.println("- " + item.getName() + " (ID: " + item.getID() + ")");
+			System.out.println("  Price: " + item.getPrice() + " EGP");
+			System.out.println("  Stock: " + item.getStock());
+			System.out.println("  Minimum Age: " + item.getMinimumAge());
+			System.out.println("---------------------------");
+		}
+
 		/*
 		 * To check the stock for(Item item:productList) {
 		 * System.out.println(item.getName()); }
 		 */
-		/*
+ /*
 		 * // Morphine Morphine morphine = new Morphine("12");
 		 * 
 		 * // Steroids Steroids steroids = new Steroids("13");
@@ -37,9 +52,8 @@ public class Main {
 		 * "SC002", "ClearTone", 14, 50, "Unisex", "cleansing");
 		 * 
 		 */
-
 		// ===Order Making===
-		Order[] order1 = { new Order("morphine", 3), new Order("steroids", 6), new Order("panadol", 6),
+		/*Order[] order1 = { new Order("morphine", 3), new Order("steroids", 6), new Order("panadol", 6),
 				new Order("tylenol", 6), new Order("vitalBoost", 6), new Order("energyPlus", 6),
 				new Order("silkSmooth", 6), new Order("clear", 6), new Order("glowGuard", 6),
 				new Order("clearTone", 6), };
@@ -51,7 +65,8 @@ public class Main {
 
 		Receipt receipt2 = new Receipt(order2);
 		receipt2.printReceipt();
-
+		 */
+		//Order[] order1 = { new Order("morphine", 1), new Order("steroids", 1), new Order("panadol", 1)};
 	}
 
 }

@@ -5,10 +5,9 @@ public class Order {
 	private double OrderPrice;
 	private int quantity;
 
-	public Order(String itemName, int quantity) {
+	public Order(String itemName, int quantity) throws Item.InsufficientStockException { // declared that it will throw an exception
 
 		// Add exception handling if the item is not in the list (stock)
-
 		// Create new order
 		this.item = Stock.findItemByName(itemName);
 		this.quantity = quantity;

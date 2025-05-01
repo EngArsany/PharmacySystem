@@ -14,20 +14,20 @@ public abstract class Medicine extends Item implements Dosable {
 	}
 
 	// Getters for the medicine's properties
-	@Override
+	@Override //overrides dosable interface
 	public String getDosageInstructions() {
 		// Dosable Interface method
 		return dosageInstructions;
 	}
 
-	@Override
+	@Override //overrides dosable interface
 	public String getAdministrationRoute() {
 		// Dosable Interface method
 		return adminstrationRoute;
 	}
 
 	// Check if the medicine is safe based on patient's age
-	@Override
+	@Override //overrides dosable interface
 	public boolean isDosageSafeForAge(int ageInYears) {
 		// Dosable Interface method
 		return ageInYears >= this.getMinimumAge();

@@ -16,17 +16,17 @@ public class Multivitamins extends PersonalCare implements SuitableForChildren, 
 		return effectiveSubstance;
 	}
 
-	@Override
+	@Override //overrides dosable interface
 	public String getDosageInstructions() {
 		return " Before sleep"; // Always
 	}
 
-	@Override
+	@Override //overrides dosable interface
 	public String getAdministrationRoute() {
 		return "Skin"; // Always
 	}
 
-	@Override
+	@Override //overrides dosable interface
 	public boolean isDosageSafeForAge(int age) {
 		return true; // Always safe in this simplified version
 	}

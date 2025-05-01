@@ -8,28 +8,95 @@ import java.time.LocalDate;
 public class Main {
 
 	public static void main(String[] args) {
-		//new Stock();
-		//List<Item> productList = Stock.getProductList();
+		// intializing stock
+		new Stock();
+		List<Item> productList = Stock.getProductList();
 
-		// Initialize stock
-		Stock pharmacyStock = new Stock();
+		// Print product list using describe() methods
+		System.out.println("=========== PHARMACY STOCK ITEMS ============");
+		System.out.println("=============================================");
 
-		// Get and print product list
-		List<Item> productList = pharmacyStock.getProductList();
-		System.out.println("===== Pharmacy Products =====");
 		for (Item item : productList) {
-			System.out.println("- " + item.getName() + " (ID: " + item.getID() + ")");
-			System.out.println("  Price: " + item.getPrice() + " EGP");
-			System.out.println("  Stock: " + item.getStock());
-			System.out.println("  Minimum Age: " + item.getMinimumAge());
-			System.out.println("---------------------------");
+			item.describe();  // This will call the appropriate describe() for each item type
+			System.out.println("-----------------------------");
 		}
 
+		// try - catch block for ordering and printing recipt
+		try {
+			System.out.println("Processing Order");
+
+			// Create order array - note the exact product names must match (case-insensitive)
+			Order[] order1 = {
+				new Order("Morphine", 10),
+				new Order("Steroids", 6),
+				new Order("Panadol", 6),
+				new Order("Tylenol", 6),
+				new Order("VitalBoost", 6),
+				new Order("EnergyPlus", 6),
+				new Order("SilkSmooth", 6),
+				new Order("Clear", 6),
+				new Order("GlowGuard", 6),
+				new Order("ClearTone", 6)
+			};
+
+			// Process receipt
+			Receipt receipt1 = new Receipt(order1);
+			receipt1.printReceipt();
+
+		} catch (Item.ItemNotFoundException e) {
+			System.err.println("Order Failed - " + e.getMessage());
+			// You could add recovery logic here, like suggesting similar products
+		} catch (Item.InsufficientStockException e) {
+			System.err.println("Order Failed - " + e.getMessage());
+			// Could suggest partial fulfillment or backorder
+		} catch (IllegalArgumentException e) {
+			System.err.println("Order Failed - " + e.getMessage());
+		} catch (Exception e) {
+			System.err.println("Order Failed - " + "unexpected behaviour");
+			e.printStackTrace();
+		}
+
+		// Print product list after ordering order number 1
+		System.out.println("=========== PHARMACY STOCK ITEMS ============");
+		System.out.println("=============================================");
+
+		for (Item item : productList) {
+			item.describe();  // This will call the appropriate describe() for each item type
+			System.out.println("-----------------------------");
+		}
+
+		// To check the stock items and quantity
+		for (Item item : productList) {
+			System.out.println(item.getName() + " (stock: " + item.getStock() + ") ");
+		}
+		System.out.println("===========================================");
+
+		// taking order #2
+		try {
+			System.out.println("Processing Order");
+
+			// Create order array - note the exact product names must match (case-insensitive)
+			Order[] order2 = {
+				new Order("panadol", 2),
+				new Order("clear", 1)
+			};
+
+			Receipt receipt2 = new Receipt(order2);
+			receipt2.printReceipt();
+
+		} catch (Item.ItemNotFoundException e) {
+			System.err.println("Order Failed - " + e.getMessage());
+			// You could add recovery logic here, like suggesting similar products
+		} catch (Item.InsufficientStockException e) {
+			System.err.println("Order Failed - " + e.getMessage());
+			// Could suggest partial fulfillment or backorder
+		} catch (IllegalArgumentException e) {
+			System.err.println("Order Failed - " + e.getMessage());
+		} catch (Exception e) {
+			System.err.println("Order Failed - " + "unexpected behaviour");
+			e.printStackTrace();
+		}
 		/*
-		 * To check the stock for(Item item:productList) {
-		 * System.out.println(item.getName()); }
-		 */
- /*
 		 * // Morphine Morphine morphine = new Morphine("12");
 		 * 
 		 * // Steroids Steroids steroids = new Steroids("13");
@@ -52,21 +119,7 @@ public class Main {
 		 * "SC002", "ClearTone", 14, 50, "Unisex", "cleansing");
 		 * 
 		 */
-		// ===Order Making===
-		/*Order[] order1 = { new Order("morphine", 3), new Order("steroids", 6), new Order("panadol", 6),
-				new Order("tylenol", 6), new Order("vitalBoost", 6), new Order("energyPlus", 6),
-				new Order("silkSmooth", 6), new Order("clear", 6), new Order("glowGuard", 6),
-				new Order("clearTone", 6), };
-
-		Receipt receipt1 = new Receipt(order1);
-		receipt1.printReceipt();
-
-		Order[] order2 = { new Order("panadol:", 2), new Order("clear", 1) };
-
-		Receipt receipt2 = new Receipt(order2);
-		receipt2.printReceipt();
-		 */
-		//Order[] order1 = { new Order("morphine", 1), new Order("steroids", 1), new Order("panadol", 1)};
+		
 	}
 
 }

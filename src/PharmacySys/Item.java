@@ -1,7 +1,7 @@
 package PharmacySys;
 
 // Abstract class representing a general item in the pharmacy system
-public abstract class Item {
+public abstract class Item implements Comparable<Item> {
 
 	// Basic attributes of any item
 	private String name;
@@ -78,4 +78,9 @@ public abstract class Item {
 		System.out.println("Minimum Age: " + this.getMinimumAge());
 	}
 
+	@Override
+	public int compareTo(Item other) {
+		// Compare based on ID (natural ordering)
+		return this.ID.compareTo(other.ID);
+	}
 }

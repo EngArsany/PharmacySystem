@@ -1,6 +1,7 @@
 package PharmacySys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Stock {
 
@@ -9,6 +10,7 @@ public class Stock {
 	public Stock() {
 		products = new ArrayList<>();
 		initializeProducts();
+		Collections.sort(products); // ✅ Sorts by ID (via compareTo in Item)
 	}
 
 	public static ArrayList<Item> getProductList() {
@@ -17,26 +19,26 @@ public class Stock {
 
 	private void initializeProducts() {
 		// Morphine
-		products.add(new Morphine("12"));
+		products.add(new Morphine("02MH012"));
 
 		// Steroids
-		products.add(new Steroids("13"));
+		products.add(new Steroids("03ST013"));
 
 		// Paracetamol
-		products.add(new Paracetamol(12.75, "P001", "Panadol", 6, 100, "Oral", "Take 1 tablet every 6 hours", 20));
-		products.add(new Paracetamol(9.50, "P002", "Tylenol", 10, 80, "Oral", "Take 2 tablets after meals", 16));
+		products.add(new Paracetamol(12.75, "01PA001", "Panadol", 6, 100, "Oral", "Take 1 tablet every 6 hours", 20));
+		products.add(new Paracetamol(9.50, "01PA002", "Tylenol", 10, 80, "Oral", "Take 2 tablets after meals", 16));
 
 		// Multivitamins
-		products.add(new Multivitamins(29.99, "MV001", "VitalBoost", 18, 50, "Unisex", "Ginseng"));
-		products.add(new Multivitamins(34.50, "MV002", "EnergyPlus", 12, 30, "Male", "Coenzyme Q10"));
+		products.add(new Multivitamins(29.99, "11MV001", "VitalBoost", 18, 50, "Unisex", "Ginseng"));
+		products.add(new Multivitamins(34.50, "11MV002", "EnergyPlus", 12, 30, "Male", "Coenzyme Q10"));
 
 		// Shampoo
-		products.add(new Shampoo(15.99, "S001", "SilkSmooth", 5, 60, "Female", "Lavender"));
-		products.add(new Shampoo(13.49, "S002", "Clear", 8, 40, "Male", "Mint"));
+		products.add(new Shampoo(15.99, "12SH001", "SilkSmooth", 5, 60, "Female", "Lavender"));
+		products.add(new Shampoo(13.49, "12SH002", "Clear", 8, 40, "Male", "Mint"));
 
 		// Skincare
-		products.add(new Skincare(22.00, "SC001", "GlowGuard", 16, 35, "Female", "sun protection"));
-		products.add(new Skincare(18.75, "SC002", "ClearTone", 14, 50, "Unisex", "cleansing"));
+		products.add(new Skincare(22.00, "13SC001", "GlowGuard", 16, 35, "Female", "sun protection"));
+		products.add(new Skincare(18.75, "13SC002", "ClearTone", 14, 50, "Unisex", "cleansing"));
 
 	} // for better readability
 

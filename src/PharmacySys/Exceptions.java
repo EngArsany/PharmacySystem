@@ -18,5 +18,5 @@ public final class Exceptions {
         }
     }
 
-    // Add more pharmacy-related exceptions here as needed
+    
 }

@@ -1,10 +1,2 @@
 # NetBeans-specific files (exclude all NetBeans metadata)
-/Hotel_system/nbproject/private/
-/nbproject/private/
-/nbproject/
-/build/
-/dist/
-
 # Build system files (if not using Maven/Gradle)
-/build.xml          # Exclude Ant build file (if Eclipse uses Maven/Gradle)
-/manifest.mf        # Exclude auto-generated Manifest file

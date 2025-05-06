@@ -42,10 +42,10 @@ public class Main {
 			Receipt receipt1 = new Receipt(order1);
 			receipt1.printReceipt();
 
-		} catch (Item.ItemNotFoundException e) {
+		} catch (Exceptions.ItemNotFoundException e) {
 			System.err.println("Order Failed - " + e.getMessage());
 			// You could add recovery logic here, like suggesting similar products
-		} catch (Item.InsufficientStockException e) {
+		} catch (Exceptions.InsufficientStockException e) {
 			System.err.println("Order Failed - " + e.getMessage());
 			// Could suggest partial fulfillment or backorder
 		} catch (IllegalArgumentException e) {
@@ -82,10 +82,10 @@ public class Main {
 			Receipt receipt2 = new Receipt(order2);
 			receipt2.printReceipt();
 
-		} catch (Item.ItemNotFoundException e) {
+		} catch (Exceptions.ItemNotFoundException e) {
 			System.err.println("Order Failed - " + e.getMessage());
 			// You could add recovery logic here, like suggesting similar products
-		} catch (Item.InsufficientStockException e) {
+		} catch (Exceptions.InsufficientStockException e) {
 			System.err.println("Order Failed - " + e.getMessage());
 			// Could suggest partial fulfillment or backorder
 		} catch (IllegalArgumentException e) {

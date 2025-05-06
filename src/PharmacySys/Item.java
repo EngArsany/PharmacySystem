@@ -10,22 +10,6 @@ public abstract class Item implements Comparable<Item> {
 	private int stock; // Items available
 	private int minimumAge;
 
-	// creating a custom exception class for handling if quantity  > stock
-	public static class InsufficientStockException extends Exception {
-
-		public InsufficientStockException(String message) {
-			super(message);
-		}
-	}
-
-	//creating a custom exception class for handling if item is not found
-	public static class ItemNotFoundException extends Exception {
-
-		public ItemNotFoundException(String message) {
-			super(message);
-		}
-	}
-
 	// Full constructor used when all item properties are known
 	public Item(double price, String ID, String name, int minimumAge, int stock) {
 		this.price = price;
@@ -57,12 +41,12 @@ public abstract class Item implements Comparable<Item> {
 	}
 
 	// Method to reduce stock when ordering
-	public void decreaseStock(int quantity) throws InsufficientStockException {
+	public void decreaseStock(int quantity) throws Exceptions.InsufficientStockException {
 		if (quantity <= 0) { // if quantity is negative
 			throw new IllegalArgumentException("Quantity must be a positive number. You entered: " + quantity);
 		}
 		if (quantity > stock) { // if quantity  > stock
-			throw new InsufficientStockException(
+			throw new Exceptions.InsufficientStockException(
 					"Insufficient stock. Requested: " + quantity + ", Available: " + stock
 			);
 		}

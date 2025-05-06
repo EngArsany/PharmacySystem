@@ -42,13 +42,13 @@ public class Stock {
 
 	} // for better readability
 
-	public static Item findItemByName(String name) throws Item.ItemNotFoundException {
+	public static Item findItemByName(String name) throws Exceptions.ItemNotFoundException {
 		for (Item product : products) {
 			if (product.getName().equalsIgnoreCase(name)) {
 				return product;
 			}
 		}
-		throw new Item.ItemNotFoundException("Item '" + name + "' not found in stock"); // handled here and in order class also
+		throw new Exceptions.ItemNotFoundException("Item '" + name + "' not found in stock"); // handled here and in order class also
 	}
 
 }

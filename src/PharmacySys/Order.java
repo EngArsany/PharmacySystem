@@ -6,12 +6,12 @@ public class Order {
 	private double OrderPrice;
 	private int quantity;
 
-	public Order(String itemName, int quantity) throws Item.InsufficientStockException, Item.ItemNotFoundException { // declared that it will throw an exception
+	public Order(String itemName, int quantity) throws Exceptions.InsufficientStockException, Exceptions.ItemNotFoundException { // declared that it will throw an exception
 
 		// Add exception handling if the item is not in the list (stock)
 		this.item = Stock.findItemByName(itemName);
 		if (this.item == null) {
-			throw new Item.ItemNotFoundException("Item with name '" + itemName + "' not found in stock.");
+			throw new Exceptions.ItemNotFoundException("Item with name '" + itemName + "' not found in stock.");
 		}
 
 		// Create new order

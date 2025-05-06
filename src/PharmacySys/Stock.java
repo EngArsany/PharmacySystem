@@ -1,7 +1,6 @@
 package PharmacySys;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Stock {
 
@@ -10,7 +9,6 @@ public class Stock {
 	public Stock() {
 		products = new ArrayList<>();
 		initializeProducts();
-		Collections.sort(products); // ✅ Sorts by ID (via compareTo in Item)
 	}
 
 	public static ArrayList<Item> getProductList() {

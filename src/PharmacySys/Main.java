@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.util.Collections;
 
 public class Main {
 
@@ -12,14 +13,39 @@ public class Main {
 		new Stock();
 		List<Item> productList = Stock.getProductList();
 
-		// Print product list using describe() methods
-		System.out.println("=========== PHARMACY STOCK ITEMS ============");
-		System.out.println("=============================================");
-		for (Item item : productList) {
-			item.describe();  // This will call the appropriate describe() for each item type
-			System.out.println("-----------------------------");
-		}
+		// Print sorted product list using describe() methods according to ID
+		System.out.println("============== PHARMACY STOCK ITEMS ===============");
+		System.out.println("           ===========================");
+		System.out.println("");
 
+		// === Sort & Print Medicines ===
+		List<Medicine> medicines = new ArrayList<>();
+		for (Item item : productList) {
+			if (item instanceof Medicine) {
+				medicines.add((Medicine) item);
+			}
+		}
+		Collections.sort(medicines);  // Uses Medicine's compareTo()
+		System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+		for (Medicine med : medicines) {
+			med.describe();
+		}
+		System.out.println(" ");
+		// === Sort & Print PersonalCare ===
+		List<PersonalCare> personalCareItems = new ArrayList<>();
+		for (Item item : productList) {
+			if (item instanceof PersonalCare) {
+				personalCareItems.add((PersonalCare) item);
+			}
+		}
+		Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
+		System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
+		for (PersonalCare pc : personalCareItems) {
+			pc.describe();
+		}
+		
+		
+		
 		// try - catch block for ordering and printing recipt
 		try {
 			System.out.println("Processing Order");
@@ -55,20 +81,41 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		// Print product list after ordering order number 1
-		System.out.println("=========== PHARMACY STOCK ITEMS ============");
-		System.out.println("=============================================");
+		
+		
+		/// Print product list using describe() methods
+		System.out.println("============== PHARMACY STOCK ITEMS ===============");
+		System.out.println("           ===========================");
+		System.out.println("");
+
+		// === Sort & Print Medicines ===
 		for (Item item : productList) {
-			item.describe();  // This will call the appropriate describe() for each item type
-			System.out.println("-----------------------------");
+			if (item instanceof Medicine) {
+				medicines.add((Medicine) item);
+			}
+		}
+		
+		Collections.sort(medicines);  // Uses Medicine's compareTo()
+		System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+		for (Medicine med : medicines) {
+			med.describe();
+		}
+		System.out.println(" ");
+		
+		// === Sort & Print PersonalCare ===
+		for (Item item : productList) {
+			if (item instanceof PersonalCare) {
+				personalCareItems.add((PersonalCare) item);
+			}
+		}
+		
+		Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
+		System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
+		for (PersonalCare pc : personalCareItems) {
+			pc.describe();
 		}
 
-		// To check the stock items and quantity
-		for (Item item : productList) {
-			System.out.println(item.getName() + " (stock: " + item.getStock() + ") ");
-		}
-		System.out.println("===========================================");
-
+		
 		// taking order #2
 		try {
 			System.out.println("Processing Order");
@@ -117,7 +164,7 @@ public class Main {
 		 * "SC002", "ClearTone", 14, 50, "Unisex", "cleansing");
 		 * 
 		 */
-		
+
 	}
 
 }

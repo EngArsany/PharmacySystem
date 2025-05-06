@@ -1,6 +1,6 @@
 package PharmacySys;
 
-public abstract class Medicine extends Item implements Dosable {
+public abstract class Medicine extends Item implements Dosable, Comparable<Medicine> {
 
 	private String dosageInstructions;
 	private String adminstrationRoute;
@@ -38,6 +38,11 @@ public abstract class Medicine extends Item implements Dosable {
 		super.describe();
 		System.out.println("Dosage Instructions: " + this.getDosageInstructions());
 		System.out.println("Administration Route: " + this.getAdministrationRoute());
+		System.out.println("-------------------------------------------------");
 	}
 
+	@Override
+	public int compareTo(Medicine other) {
+		return this.getID().compareTo(other.getID());  // Sort Medicine instances by ID
+	}
 }

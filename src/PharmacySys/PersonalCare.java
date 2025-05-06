@@ -1,6 +1,6 @@
 package PharmacySys;
 
-public abstract class PersonalCare extends Item {
+public abstract class PersonalCare extends Item implements Comparable<PersonalCare> {
 
 	private String gender;
 
@@ -18,6 +18,11 @@ public abstract class PersonalCare extends Item {
 	public void describe() {
 		super.describe();
 		System.out.println("Product for: " + gender);
+		System.out.println("-------------------------------------------------");
 	}
 
+	@Override
+	public int compareTo(PersonalCare other) {
+		return this.getID().compareTo(other.getID());  // Sort PersonalCare instances by ID
+	}
 }

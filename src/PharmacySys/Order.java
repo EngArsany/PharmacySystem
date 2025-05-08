@@ -13,7 +13,7 @@ public class Order {
 		if (this.item == null) {
 			throw new Exceptions.ItemNotFoundException("Item with name '" + itemName + "' not found in stock.");
 		}
-
+			
 		// Create new order
 		this.quantity = quantity;
 		this.OrderPrice = item.getPrice() * quantity;

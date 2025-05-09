@@ -1,2 +1,4 @@
 # NetBeans-specific files (exclude all NetBeans metadata)
 # Build system files (if not using Maven/Gradle)
+/dist/
+/Project_Draft1/target/

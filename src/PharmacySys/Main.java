@@ -73,25 +73,16 @@ public class Main {
                     new Order("GlowGuard", 6),
                     new Order("ClearTone", 6)));
 
-// Process receipt
+            // Process receipt
             Receipt receipt1 = new Receipt(order1);
             receipt1.printReceipt();
-
-        } catch (Exceptions.ItemNotFoundException e) {
+        } catch (Exceptions.ItemNotFoundException | Exceptions.InsufficientStockException | IllegalArgumentException e) {
+            //Use multicatch to reduce redundancy
             System.err.println("Order Failed - " + e.getMessage());
-            // You could add recovery logic here, like suggesting similar products
-        } catch (Exceptions.InsufficientStockException e) {
-            System.err.println("Order Failed - " + e.getMessage());
-            // Could suggest partial fulfillment or backorder
-        } catch (IllegalArgumentException e) {
-            System.err.println("Order Failed - " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("Order Failed - " + "unexpected behaviour");
-            e.printStackTrace();
         }
 
         /// Print product list using describe() methods
-		System.out.println("============== PHARMACY STOCK ITEMS ===============");
+	System.out.println("============== PHARMACY STOCK ITEMS ===============");
         System.out.println("           ===========================");
         System.out.println("");
 
@@ -133,19 +124,10 @@ public class Main {
 
             Receipt receipt2 = new Receipt(order2);
             receipt2.printReceipt();
-
-        } catch (Exceptions.ItemNotFoundException e) {
+        } catch (Exceptions.ItemNotFoundException | Exceptions.InsufficientStockException | IllegalArgumentException e) {
             System.err.println("Order Failed - " + e.getMessage());
-            // You could add recovery logic here, like suggesting similar products
-        } catch (Exceptions.InsufficientStockException e) {
-            System.err.println("Order Failed - " + e.getMessage());
-            // Could suggest partial fulfillment or backorder
-        } catch (IllegalArgumentException e) {
-            System.err.println("Order Failed - " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("Order Failed - " + "unexpected behaviour");
-            e.printStackTrace();
         }
+
         /*
 		 * // Morphine Morphine morphine = new Morphine("12");
 		 * 
@@ -169,7 +151,6 @@ public class Main {
 		 * "SC002", "ClearTone", 14, 50, "Unisex", "cleansing");
 		 * 
          */
-
     }
 
 }

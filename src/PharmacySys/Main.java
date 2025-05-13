@@ -19,14 +19,7 @@ public class Main {
 
         // Print sorted product list using describe() methods according to ID
         // === Sort & Print All Items ===
-        System.out.println("============== SORTED PRODUCTS (BY ID) ==============");
-        Collections.sort(productList);
-        for (int i = 0; i < productList.size(); i++) {
-            System.out.println(
-                    (i + 1) + ". " + productList.get(i).getName() + " - ID: " + productList.get(i).getID()
-            );
-        }
-        System.out.println("");
+        Stock.viewAllProducts();
 
         // === Sort Medicine & PersonalCare items ===
         List<Medicine> medicines = new ArrayList<>();

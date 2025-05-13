@@ -29,14 +29,14 @@ public class Stock {
 
         // Multivitamins
         products.add(new Multivitamins(29.99, "11MV001", "VitalBoost", 18, 50, "Unisex", "Ginseng"));
-        products.add(new Multivitamins(34.50, "11MV002", "EnergyPlus", 12, 30, "Male", "Coenzyme Q10"));
+        products.add(new Multivitamins(34.50, "11MV002", "EnergyPlus", 12, 30, "Men", "Coenzyme Q10"));
 
         // Shampoo
-        products.add(new Shampoo(15.99, "12SH001", "SilkSmooth", 5, 60, "Female", "Lavender"));
-        products.add(new Shampoo(13.49, "12SH002", "Clear", 8, 40, "Male", "Mint"));
+        products.add(new Shampoo(15.99, "12SH001", "SilkSmooth", 5, 60, "Women", "Lavender"));
+        products.add(new Shampoo(13.49, "12SH002", "Clear", 8, 40, "Men", "Mint"));
 
         // Skincare
-        products.add(new Skincare(22.00, "13SC001", "GlowGuard", 16, 35, "Female", "sun protection"));
+        products.add(new Skincare(22.00, "13SC001", "GlowGuard", 16, 35, "Women", "sun protection"));
         products.add(new Skincare(18.75, "13SC002", "ClearTone", 14, 50, "Unisex", "cleansing"));
 
     } // for better readability

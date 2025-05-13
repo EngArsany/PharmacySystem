@@ -5,17 +5,19 @@ import java.util.List;
 import java.util.Collections;
 
 public class Main {
+    static List<Item> productList;
 
     public static void main(String[] args) {
         // intializing stock
         new Stock();
-        List<Item> productList = Stock.getProductList();
+        productList = Stock.getProductList();
 
-        // Print sorted product list using describe() methods according to ID
-        System.out.println("============== PHARMACY STOCK ITEMS ===============");
+        //Program Header
+        System.out.println("============== PHARMACY STOCK Program ===============");
         System.out.println("           ===========================");
         System.out.println("");
 
+        // Print sorted product list using describe() methods according to ID
         // === Sort & Print All Items ===
         System.out.println("============== SORTED PRODUCTS (BY ID) ==============");
         Collections.sort(productList);

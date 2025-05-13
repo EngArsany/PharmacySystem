@@ -23,12 +23,14 @@ public class Main {
                 medicines.add((Medicine) item);
             }
         }
-        Collections.sort(medicines);  // Uses Medicine's compareTo()
         System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+        Collections.sort(medicines);  // Uses inherited compareTo()
         for (Medicine med : medicines) {
             med.describe();
+            System.out.println("-------------------------------------------------");
         }
         System.out.println(" ");
+
         // === Sort & Print PersonalCare ===
         List<PersonalCare> personalCareItems = new ArrayList<>();
         for (Item item : productList) {
@@ -36,10 +38,12 @@ public class Main {
                 personalCareItems.add((PersonalCare) item);
             }
         }
-        Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
+        Collections.sort(personalCareItems);  // Uses inherited compareTo()
         System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
         for (PersonalCare pc : personalCareItems) {
             pc.describe();
+            System.out.println("-------------------------------------------------");
+
         }
 
         // try - catch block for ordering and printing recipt

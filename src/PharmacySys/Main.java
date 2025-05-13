@@ -57,13 +57,15 @@ public class Main {
         }
         System.out.println(" ");
 
+        //== Order #1 ==
         // try - catch block for ordering and printing recipt
         try {
-            System.out.println("Processing Order 1");
+            System.out.println("=============== PROCESSING ORDER 1 ===============");
 
-            // Create order array - note the exact product names must match (case-insensitive)
-            ArrayList<Order> order1 = new ArrayList<>(List.of(new Order("Morphine", 10),
-                    new Order("Steroids", 6),
+            // Create order array
+            ArrayList<Order> order1 = new ArrayList<>(List.of(
+                    new Order("Morphine", 10),
+                    new Order("steroids", 6),
                     new Order("Panadol", 6),
                     new Order("Tylenol", 6),
                     new Order("VitalBoost", 6),
@@ -81,41 +83,28 @@ public class Main {
             System.err.println("Order Failed - " + e.getMessage());
         }
 
-        /// Print product list using describe() methods
+/*
+        //=== Code for reviewing stock ===
+        // Print product list using describe() methods
 	System.out.println("============== PHARMACY STOCK ITEMS ===============");
         System.out.println("           ===========================");
         System.out.println("");
 
-        // === Sort & Print Medicines ===
-        for (Item item : productList) {
-            if (item instanceof Medicine) {
-                medicines.add((Medicine) item);
-            }
-        }
-
-        Collections.sort(medicines);  // Uses Medicine's compareTo()
         System.out.println("============== SORTED MEDICINES (BY ID) ==============");
         for (Medicine med : medicines) {
             med.describe();
         }
         System.out.println(" ");
 
-        // === Sort & Print PersonalCare ===
-        for (Item item : productList) {
-            if (item instanceof PersonalCare) {
-                personalCareItems.add((PersonalCare) item);
-            }
-        }
-
-        Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
         System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
         for (PersonalCare pc : personalCareItems) {
             pc.describe();
         }
+*/
 
         // taking order #2
         try {
-            System.out.println("Processing Order");
+            System.out.println("=============== PROCESSING ORDER 2 ===============");
 
             // Create order array - note the exact product names must match (case-insensitive)
             ArrayList<Order> order2 = new ArrayList<>();

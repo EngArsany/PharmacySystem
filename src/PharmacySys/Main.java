@@ -2,7 +2,6 @@ package PharmacySys;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 
 public class Main {
     static List<Item> productList;
@@ -20,44 +19,10 @@ public class Main {
 
         // Print sorted product list using describe() methods according to ID
         // === Sort & Print All Items in short form ===
-        Stock.viewProductList();    //Abstraction
-        Stock.describeList();
+        Stock.viewProductList();    //Short list to check sorting
+        Stock.describeList();   //Long list to check inheritance and polymorphism
 
-
-//        // === Sort Medicine & PersonalCare items ===
-//        List<Medicine> medicines = new ArrayList<>();
-//        List<PersonalCare> personalCareItems = new ArrayList<>();
-//        for (Item item : productList) {
-//            if (item instanceof Medicine) {
-//                medicines.add((Medicine) item);
-//            } else if (item instanceof PersonalCare) {
-//                personalCareItems.add((PersonalCare) item);
-//            }
-//
-//        }
-//        Collections.sort(medicines);  // Uses inherited compareTo() from comparable class
-//        Collections.sort(personalCareItems);  // Uses inherited compareTo()
-//
-//        //Print Medicine Items
-//        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
-//        for (Medicine med : medicines) {
-//            med.describe(); //Uses polymorphism
-//            if(med instanceof Scheduled){
-//                System.out.println("Need doctor's permission");
-//            }
-//            System.out.println("-------------------------------------------------");
-//        }
-//        System.out.println(" ");
-//
-//        // === Print PersonalCare ===
-//        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
-//        for (PersonalCare pc : personalCareItems) {
-//            pc.describe();  //Uses polymorphism
-//            System.out.println("-------------------------------------------------");
-//
-//        }
-//        System.out.println(" ");
-
+        
         //== Order #1 ==
         // try - catch block for ordering and printing recipt
         try {
@@ -83,24 +48,9 @@ public class Main {
             //Use multicatch to reduce redundancy
             System.err.println("Order Failed - " + e.getMessage());
         }
-
-
-//        //=== Code for reviewing stock ===
-//        // Print product list using describe() methods
-//	System.out.println("============== PHARMACY STOCK ITEMS ===============");
-//        System.out.println("           ===========================");
-//        System.out.println("");
-//
-//        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
-//        for (Medicine med : medicines) {
-//            med.describe();
-//        }
-//        System.out.println(" ");
-//
-//        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
-//        for (PersonalCare pc : personalCareItems) {
-//            pc.describe();
-//        }
+        
+        //=== To Review Stock ===
+        Stock.viewProductList();    //Short list to check sorting
 
 
         // taking order #2

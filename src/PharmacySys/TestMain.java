@@ -76,6 +76,64 @@ public  class TestMain {
         System.out.println(shampoo.itemDetails());
         System.out.println(multivitamins.itemDetails());
         System.out.println(skincare.itemDetails());
+
+
+
+
+        === Medicine and PersonalCare lists ===
+//        // === Sort Medicine & PersonalCare items ===
+//        List<Medicine> medicines = new ArrayList<>();
+//        List<PersonalCare> personalCareItems = new ArrayList<>();
+//        for (Item item : productList) {
+//            if (item instanceof Medicine) {
+//                medicines.add((Medicine) item);
+//            } else if (item instanceof PersonalCare) {
+//                personalCareItems.add((PersonalCare) item);
+//            }
+//
+//        }
+//        Collections.sort(medicines);  // Uses inherited compareTo() from comparable class
+//        Collections.sort(personalCareItems);  // Uses inherited compareTo()
+//
+//        //Print Medicine Items
+//        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+//        for (Medicine med : medicines) {
+//            med.describe(); //Uses polymorphism
+//            if(med instanceof Scheduled){
+//                System.out.println("Need doctor's permission");
+//            }
+//            System.out.println("-------------------------------------------------");
+//        }
+//        System.out.println(" ");
+//
+//        // === Print PersonalCare ===
+//        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
+//        for (PersonalCare pc : personalCareItems) {
+//            pc.describe();  //Uses polymorphism
+//            System.out.println("-------------------------------------------------");
+//
+//        }
+//        System.out.println(" ");
+
+
+//        //=== Code for reviewing stock ===
+//        // Print product list using describe() methods
+//	System.out.println("============== PHARMACY STOCK ITEMS ===============");
+//        System.out.println("           ===========================");
+//        System.out.println("");
+//
+//        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+//        for (Medicine med : medicines) {
+//            med.describe();
+//        }
+//        System.out.println(" ");
+//
+//        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
+//        for (PersonalCare pc : personalCareItems) {
+//            pc.describe();
+//        }
+
+
     }
 
 

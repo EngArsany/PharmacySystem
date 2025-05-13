@@ -55,7 +55,7 @@ public class Stock {
         Collections.sort(products);
         for (int i = 0; i < products.size(); i++) {
             System.out.println(
-                    (i + 1) + ". " + products.get(i).getName() + " - ID: " + products.get(i).getID()
+                    (i + 1) + ". " + products.get(i).getName() + " - ID: " + products.get(i).getID() + " - Qty: " + products.get(i).getStock()
             );
         }
         System.out.println("");

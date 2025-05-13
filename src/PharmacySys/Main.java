@@ -127,30 +127,6 @@ public class Main {
         } catch (Exceptions.ItemNotFoundException | Exceptions.InsufficientStockException | IllegalArgumentException e) {
             System.err.println("Order Failed - " + e.getMessage());
         }
-
-        /*
-		 * // Morphine Morphine morphine = new Morphine("12");
-		 * 
-		 * // Steroids Steroids steroids = new Steroids("13");
-		 * 
-		 * // Paracetamol Paracetamol panadol = new Paracetamol(12.75, "P001",
-		 * "Panadol", 6, 100, "Oral", "Take 1 tablet every 6 hours", 20); Paracetamol
-		 * tylenol = new Paracetamol(9.50, "P002", "Tylenol", 10, 80, "Oral",
-		 * "Take 2 tablets after meals", 16);
-		 * 
-		 * // Multivitamins Multivitamins vitalBoost = new Multivitamins(29.99, "MV001",
-		 * "VitalBoost", 18, 50, "Unisex", "Ginseng"); Multivitamins energyPlus = new
-		 * Multivitamins(34.50, "MV002", "EnergyPlus", 12, 30, "Male", "Coenzyme Q10");
-		 * 
-		 * // Shampoo Shampoo silkSmooth = new Shampoo(15.99, "S001", "SilkSmooth", 5,
-		 * 60, "Female", "Lavender"); Shampoo clear = new Shampoo(13.49, "S002",
-		 * "Clear", 8, 40, "Male", "Mint");
-		 * 
-		 * // Skincare Skincare glowGuard = new Skincare(22.00, "SC001", "GlowGuard",
-		 * 16, 35, "Female", "sun protection"); Skincare clearTone = new Skincare(18.75,
-		 * "SC002", "ClearTone", 14, 50, "Unisex", "cleansing");
-		 * 
-         */
     }
 
 }

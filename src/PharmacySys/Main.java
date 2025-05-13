@@ -11,6 +11,7 @@ public class Main {
         // intializing stock
         new Stock();
         productList = Stock.getProductList();
+        //Encapsulation: all data and methods related to the stock is in the Stock class
 
         //Program Header
         System.out.println("============== PHARMACY STOCK Program ===============");
@@ -19,7 +20,7 @@ public class Main {
 
         // Print sorted product list using describe() methods according to ID
         // === Sort & Print All Items ===
-        Stock.viewAllProducts();
+        Stock.viewAllProducts();    //Abstraction
 
         // === Sort Medicine & PersonalCare items ===
         List<Medicine> medicines = new ArrayList<>();
@@ -32,13 +33,13 @@ public class Main {
             }
 
         }
-        Collections.sort(medicines);  // Uses inherited compareTo()
+        Collections.sort(medicines);  // Uses inherited compareTo() from comparable class
         Collections.sort(personalCareItems);  // Uses inherited compareTo()
 
         //Print Medicine Items
         System.out.println("============== SORTED MEDICINES (BY ID) ==============");
         for (Medicine med : medicines) {
-            med.describe();
+            med.describe(); //Uses polymorphism
             System.out.println("-------------------------------------------------");
         }
         System.out.println(" ");
@@ -46,7 +47,7 @@ public class Main {
         // === Print PersonalCare ===
         System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
         for (PersonalCare pc : personalCareItems) {
-            pc.describe();
+            pc.describe();  //Uses polymorphism
             System.out.println("-------------------------------------------------");
 
         }
@@ -78,24 +79,24 @@ public class Main {
             System.err.println("Order Failed - " + e.getMessage());
         }
 
-/*
-        //=== Code for reviewing stock ===
-        // Print product list using describe() methods
-	System.out.println("============== PHARMACY STOCK ITEMS ===============");
-        System.out.println("           ===========================");
-        System.out.println("");
 
-        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
-        for (Medicine med : medicines) {
-            med.describe();
-        }
-        System.out.println(" ");
+//        //=== Code for reviewing stock ===
+//        // Print product list using describe() methods
+//	System.out.println("============== PHARMACY STOCK ITEMS ===============");
+//        System.out.println("           ===========================");
+//        System.out.println("");
+//
+//        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+//        for (Medicine med : medicines) {
+//            med.describe();
+//        }
+//        System.out.println(" ");
+//
+//        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
+//        for (PersonalCare pc : personalCareItems) {
+//            pc.describe();
+//        }
 
-        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
-        for (PersonalCare pc : personalCareItems) {
-            pc.describe();
-        }
-*/
 
         // taking order #2
         try {

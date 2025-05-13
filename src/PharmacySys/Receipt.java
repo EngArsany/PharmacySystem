@@ -1,21 +1,20 @@
 package PharmacySys;
 
-//Java Program to illustrate LocalDateTime Class by
-//Formatting LocalDateTime to string
 
 //Importing all classes from java.time package
 import java.time.LocalDateTime;
 import java.time.format.*;
+import java.util.ArrayList;
 
 public class Receipt {
 
-	private Order[] orders;
+	private final ArrayList<Order> orders;
 	private int itemsCounter = 0;
 	private float totalPrice = 0;
 	private static int numberOfReceiptsMade = 0;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
 
-	public Receipt(Order[] orders) {
+	public Receipt(ArrayList<Order> orders) {
 		this.orders = orders;
 		numberOfReceiptsMade++;
 

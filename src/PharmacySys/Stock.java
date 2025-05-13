@@ -50,7 +50,7 @@ public class Stock {
         throw new Exceptions.ItemNotFoundException("Item '" + name + "' not found in stock"); // handled here and in order class also
     }
 
-    public static void viewAllProducts() {
+    public static void viewProductList() {
         System.out.println("============== SORTED PRODUCTS (BY ID) ==============");
         Collections.sort(products);
         for (int i = 0; i < products.size(); i++) {
@@ -61,4 +61,19 @@ public class Stock {
         System.out.println("");
     }
 
+    public static void describeList() {
+        System.out.println("============== Details of All Products ==============");
+
+        for (Item item : products) {
+            item.describe();
+            if (item instanceof Scheduled) {
+                System.out.println("Need Prescription");
+            }
+            if (item instanceof SuitableForChildren) {
+                System.out.println("Suitable for children use");
+            }
+            System.out.println("-------------------------------------------------");
+        }
+
+    }
 }

@@ -19,42 +19,44 @@ public class Main {
         System.out.println("");
 
         // Print sorted product list using describe() methods according to ID
-        // === Sort & Print All Items ===
-        Stock.viewAllProducts();    //Abstraction
+        // === Sort & Print All Items in short form ===
+        Stock.viewProductList();    //Abstraction
+        Stock.describeList();
 
-        // === Sort Medicine & PersonalCare items ===
-        List<Medicine> medicines = new ArrayList<>();
-        List<PersonalCare> personalCareItems = new ArrayList<>();
-        for (Item item : productList) {
-            if (item instanceof Medicine) {
-                medicines.add((Medicine) item);
-            } else if (item instanceof PersonalCare) {
-                personalCareItems.add((PersonalCare) item);
-            }
 
-        }
-        Collections.sort(medicines);  // Uses inherited compareTo() from comparable class
-        Collections.sort(personalCareItems);  // Uses inherited compareTo()
-
-        //Print Medicine Items
-        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
-        for (Medicine med : medicines) {
-            med.describe(); //Uses polymorphism
-            if(med instanceof Scheduled){
-                System.out.println("Need doctor's permission");
-            }
-            System.out.println("-------------------------------------------------");
-        }
-        System.out.println(" ");
-
-        // === Print PersonalCare ===
-        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
-        for (PersonalCare pc : personalCareItems) {
-            pc.describe();  //Uses polymorphism
-            System.out.println("-------------------------------------------------");
-
-        }
-        System.out.println(" ");
+//        // === Sort Medicine & PersonalCare items ===
+//        List<Medicine> medicines = new ArrayList<>();
+//        List<PersonalCare> personalCareItems = new ArrayList<>();
+//        for (Item item : productList) {
+//            if (item instanceof Medicine) {
+//                medicines.add((Medicine) item);
+//            } else if (item instanceof PersonalCare) {
+//                personalCareItems.add((PersonalCare) item);
+//            }
+//
+//        }
+//        Collections.sort(medicines);  // Uses inherited compareTo() from comparable class
+//        Collections.sort(personalCareItems);  // Uses inherited compareTo()
+//
+//        //Print Medicine Items
+//        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+//        for (Medicine med : medicines) {
+//            med.describe(); //Uses polymorphism
+//            if(med instanceof Scheduled){
+//                System.out.println("Need doctor's permission");
+//            }
+//            System.out.println("-------------------------------------------------");
+//        }
+//        System.out.println(" ");
+//
+//        // === Print PersonalCare ===
+//        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
+//        for (PersonalCare pc : personalCareItems) {
+//            pc.describe();  //Uses polymorphism
+//            System.out.println("-------------------------------------------------");
+//
+//        }
+//        System.out.println(" ");
 
         //== Order #1 ==
         // try - catch block for ordering and printing recipt

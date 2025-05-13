@@ -61,5 +61,8 @@ public abstract class Item{
 		System.out.println("Amount in Stock: " + this.getStock());
 		System.out.println("Minimum Age: " + this.getMinimumAge());
 	}
+                     public String getItemsInfo(){
+                         return  "Price: " + this.getPrice() +" ID: " + this.getID() +" Qty: " + this.getStock() +" Min. Age: " + this.getMinimumAge() ;
+        }
 
 }

@@ -6,16 +6,17 @@ package com.mycompany.project_draft1;
 //Importing all classes from java.time package
 import java.time.LocalDateTime;
 import java.time.format.*;
+import java.util.ArrayList;
 
 public class Receipt {
 
-	private Order[] orders;
+	private ArrayList<Order> orders;
 	private int itemsCounter = 0;
 	private float totalPrice = 0;
 	private static int numberOfReceiptsMade = 0;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
 
-	public Receipt(Order[] orders) {
+	public Receipt(ArrayList<Order> orders) {
 		this.orders = orders;
 		numberOfReceiptsMade++;
 

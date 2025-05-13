@@ -22,6 +22,21 @@ public class Order {
 		item.decreaseStock(quantity);
 	}
 
+        public Order(Item item) throws Exceptions.InsufficientStockException, Exceptions.ItemNotFoundException { // declared that it will throw an exception
+
+		// Add exception handling if the item is not in the list (stock)
+		this.item = item;
+		if (this.item == null) {
+			throw new Exceptions.ItemNotFoundException("Item with name '" + item.getName() + "' not found in stock.");
+		}
+			
+		// Create new order
+		this.quantity = 1;
+		this.OrderPrice = item.getPrice();
+
+		// Exception handling if quantity > stock
+		item.decreaseStock(quantity);
+	}
 	public double getOrderPrice() {
 		return OrderPrice;
 	}

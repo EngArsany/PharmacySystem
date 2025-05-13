@@ -14,295 +14,311 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
-private final Map<String, Integer> selectionCounts = new LinkedHashMap<>();
-    private final TextArea historyArea = new TextArea();
+
+    private final TextArea cartTextField = new TextArea();
     private ComboBox<String> productComboBox = new ComboBox<>();
-    
+
     // Product databases with category prefixes
-    private final ObservableList<Item> medicines = FXCollections.observableArrayList( );
-    new Stock();
-		List<Item> productList = Stock.getProductList();
-    for (Item item : productList){
-    System.out.println("");}
-            
-//        "Medicines > Paracetamol", 
-//        "Medicines > Ibuprofen", 
-//        "Medicines > Amoxicillin",
-//        "Medicines > Loratadine", 
-//        "Medicines > Omeprazole"
-   
-    
-    private final ObservableList<String> skincare = FXCollections.observableArrayList(
-        "Skincare > Moisturizing Cream", 
-        "Skincare > Sunscreen SPF 50", 
-        "Skincare > Acne Treatment",
-        "Skincare > Anti-Aging Serum", 
-        "Skincare > Eye Cream"
-    );
-    
-    private final ObservableList<String> shampoos = FXCollections.observableArrayList(
-        "Shampoos > Anti-Dandruff", 
-        "Shampoos > Volume Boost", 
-        "Shampoos > Color Protect",
-        "Shampoos > Dry Scalp", 
-        "Shampoos > Organic Baby"
-    );
+    private final ObservableList<String> medicines = FXCollections.observableArrayList();
+
+    private final ObservableList<String> personalCare = FXCollections.observableArrayList();
 
     public static void main(String[] args) {
-       // intializing stock
-		new Stock();
-		List<Item> productList = Stock.getProductList();
+        // intializing stock
+        new Stock();
+        List<Item> productList = Stock.getProductList();
 
-		// Print sorted product list using describe() methods according to ID
-		System.out.println("============== PHARMACY STOCK ITEMS ===============");
-		System.out.println("           ===========================");
-		System.out.println("");
+        // Print sorted product list using describe() methods according to ID
+        System.out.println("============== PHARMACY STOCK ITEMS ===============");
+        System.out.println("           ===========================");
+        System.out.println("");
 
-		// === Sort & Print Medicines ===
-		List<Medicine> medicines = new ArrayList<>();
-		for (Item item : productList) {
-			if (item instanceof Medicine) {
-				medicines.add((Medicine) item);
-			}
-		}
-		Collections.sort(medicines);  // Uses Medicine's compareTo()
-		System.out.println("============== SORTED MEDICINES (BY ID) ==============");
-		for (Medicine med : medicines) {
-			med.describe();
-		}
-		System.out.println(" ");
-		// === Sort & Print PersonalCare ===
-		List<PersonalCare> personalCareItems = new ArrayList<>();
-		for (Item item : productList) {
-			if (item instanceof PersonalCare) {
-				personalCareItems.add((PersonalCare) item);
-			}
-		}
-		Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
-		System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
-		for (PersonalCare pc : personalCareItems) {
-			pc.describe();
-		}
-		
-		
-		
-		// try - catch block for ordering and printing recipt
-		try {
-			System.out.println("Processing Order");
+        // === Sort & Print Medicines ===
+        List<Medicine> medicines = new ArrayList<>();
+        for (Item item : productList) {
+            if (item instanceof Medicine) {
+                medicines.add((Medicine) item);
+            }
+        }
+        Collections.sort(medicines);  // Uses Medicine's compareTo()
+        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+        for (Medicine med : medicines) {
+            med.describe();
+        }
+        System.out.println(" ");
+        // === Sort & Print PersonalCare ===
+        List<PersonalCare> personalCareItems = new ArrayList<>();
+        for (Item item : productList) {
+            if (item instanceof PersonalCare) {
+                personalCareItems.add((PersonalCare) item);
+            }
+        }
+        Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
+        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
+        for (PersonalCare pc : personalCareItems) {
+            pc.describe();
+        }
 
-			// Create order array - note the exact product names must match (case-insensitive)
-			Order[] order1 = {
-				new Order("Morphine", 10),
-				new Order("Steroids", 6),
-				new Order("Panadol", 6),
-				new Order("Tylenol", 6),
-				new Order("VitalBoost", 6),
-				new Order("EnergyPlus", 6),
-				new Order("SilkSmooth", 6),
-				new Order("Clear", 6),
-				new Order("GlowGuard", 6),
-				new Order("ClearTone", 6)
-			};
+        // try - catch block for ordering and printing recipt
+//		try {
+//			System.out.println("Processing Order");
+//
+//			// Create order array - note the exact product names must match (case-insensitive)
+//			Order[] order1 = {
+//				new Order("Morphine", 10),
+//				new Order("Steroids", 6),
+//				new Order("Panadol", 6),
+//				new Order("Tylenol", 6),
+//				new Order("VitalBoost", 6),
+//				new Order("EnergyPlus", 6),
+//				new Order("SilkSmooth", 6),
+//				new Order("Clear", 6),
+//				new Order("GlowGuard", 6),
+//				new Order("ClearTone", 6)
+//			};
+//
+//			// Process receipt
+//			Receipt receipt1 = new Receipt(order1);
+//			receipt1.printReceipt();
+//
+//		} catch (Exceptions.ItemNotFoundException e) {
+//			System.err.println("Order Failed - " + e.getMessage());
+//			// You could add recovery logic here, like suggesting similar products
+//		} catch (Exceptions.InsufficientStockException e) {
+//			System.err.println("Order Failed - " + e.getMessage());
+//			// Could suggest partial fulfillment or backorder
+//		} catch (IllegalArgumentException e) {
+//			System.err.println("Order Failed - " + e.getMessage());
+//		} catch (Exception e) {
+//			System.err.println("Order Failed - " + "unexpected behaviour");
+//			e.printStackTrace();
+//		}
+//
+//		
+//		
+//		/// Print product list using describe() methods
+//		System.out.println("============== PHARMACY STOCK ITEMS ===============");
+//		System.out.println("           ===========================");
+//		System.out.println("");
+//
+//		// === Sort & Print Medicines ===
+//		for (Item item : productList) {
+//			if (item instanceof Medicine) {
+//				medicines.add((Medicine) item);
+//			}
+//		}
+//		
+//		Collections.sort(medicines);  // Uses Medicine's compareTo()
+//		System.out.println("============== SORTED MEDICINES (BY ID) ==============");
+//		for (Medicine med : medicines) {
+//			med.describe();
+//		}
+//		System.out.println(" ");
+//		
+        // === Sort & Print PersonalCare ===
+        for (Item item : productList) {
+            if (item instanceof PersonalCare) {
+                personalCareItems.add((PersonalCare) item);
+            }
+        }
 
-			// Process receipt
-			Receipt receipt1 = new Receipt(order1);
-			receipt1.printReceipt();
+        Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
+        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
+        for (PersonalCare pc : personalCareItems) {
+            pc.describe();
+        }
 
-		} catch (Exceptions.ItemNotFoundException e) {
-			System.err.println("Order Failed - " + e.getMessage());
-			// You could add recovery logic here, like suggesting similar products
-		} catch (Exceptions.InsufficientStockException e) {
-			System.err.println("Order Failed - " + e.getMessage());
-			// Could suggest partial fulfillment or backorder
-		} catch (IllegalArgumentException e) {
-			System.err.println("Order Failed - " + e.getMessage());
-		} catch (Exception e) {
-			System.err.println("Order Failed - " + "unexpected behaviour");
-			e.printStackTrace();
-		}
-
-		
-		
-		/// Print product list using describe() methods
-		System.out.println("============== PHARMACY STOCK ITEMS ===============");
-		System.out.println("           ===========================");
-		System.out.println("");
-
-		// === Sort & Print Medicines ===
-		for (Item item : productList) {
-			if (item instanceof Medicine) {
-				medicines.add((Medicine) item);
-			}
-		}
-		
-		Collections.sort(medicines);  // Uses Medicine's compareTo()
-		System.out.println("============== SORTED MEDICINES (BY ID) ==============");
-		for (Medicine med : medicines) {
-			med.describe();
-		}
-		System.out.println(" ");
-		
-		// === Sort & Print PersonalCare ===
-		for (Item item : productList) {
-			if (item instanceof PersonalCare) {
-				personalCareItems.add((PersonalCare) item);
-			}
-		}
-		
-		Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
-		System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
-		for (PersonalCare pc : personalCareItems) {
-			pc.describe();
-		}
-
-		
-		// taking order #2
-		try {
-			System.out.println("Processing Order");
-
-			// Create order array - note the exact product names must match (case-insensitive)
-			Order[] order2 = {
-				new Order("panadol", 2),
-				new Order("clear", 1)
-			};
-
-			Receipt receipt2 = new Receipt(order2);
-			receipt2.printReceipt();
-
-		} catch (Exceptions.ItemNotFoundException e) {
-			System.err.println("Order Failed - " + e.getMessage());
-			// You could add recovery logic here, like suggesting similar products
-		} catch (Exceptions.InsufficientStockException e) {
-			System.err.println("Order Failed - " + e.getMessage());
-			// Could suggest partial fulfillment or backorder
-		} catch (IllegalArgumentException e) {
-			System.err.println("Order Failed - " + e.getMessage());
-		} catch (Exception e) {
-			System.err.println("Order Failed - " + "unexpected behaviour");
-			e.printStackTrace();
-		}
-		/*
-		 * // Morphine Morphine morphine = new Morphine("12");
-		 * 
-		 * // Steroids Steroids steroids = new Steroids("13");
-		 * 
-		 * // Paracetamol Paracetamol panadol = new Paracetamol(12.75, "P001",
-		 * "Panadol", 6, 100, "Oral", "Take 1 tablet every 6 hours", 20); Paracetamol
-		 * tylenol = new Paracetamol(9.50, "P002", "Tylenol", 10, 80, "Oral",
-		 * "Take 2 tablets after meals", 16);
-		 * 
-		 * // Multivitamins Multivitamins vitalBoost = new Multivitamins(29.99, "MV001",
-		 * "VitalBoost", 18, 50, "Unisex", "Ginseng"); Multivitamins energyPlus = new
-		 * Multivitamins(34.50, "MV002", "EnergyPlus", 12, 30, "Male", "Coenzyme Q10");
-		 * 
-		 * // Shampoo Shampoo silkSmooth = new Shampoo(15.99, "S001", "SilkSmooth", 5,
-		 * 60, "Female", "Lavender"); Shampoo clear = new Shampoo(13.49, "S002",
-		 * "Clear", 8, 40, "Male", "Mint");
-		 * 
-		 * // Skincare Skincare glowGuard = new Skincare(22.00, "SC001", "GlowGuard",
-		 * 16, 35, "Female", "sun protection"); Skincare clearTone = new Skincare(18.75,
-		 * "SC002", "ClearTone", 14, 50, "Unisex", "cleansing");
-		 * 
-		 */
-
+        // taking order #2
+//		try {
+//			System.out.println("Processing Order");
+//
+//			// Create order array - note the exact product names must match (case-insensitive)
+//			Order[] order2 = {
+//				new Order("panadol", 2),
+//				new Order("clear", 1)
+//			};
+//
+//			Receipt receipt2 = new Receipt(order2);
+//			receipt2.printReceipt();
+//
+//		} catch (Exceptions.ItemNotFoundException e) {
+//			System.err.println("Order Failed - " + e.getMessage());
+//			// You could add recovery logic here, like suggesting similar products
+//		} catch (Exceptions.InsufficientStockException e) {
+//			System.err.println("Order Failed - " + e.getMessage());
+//			// Could suggest partial fulfillment or backorder
+//		} catch (IllegalArgumentException e) {
+//			System.err.println("Order Failed - " + e.getMessage());
+//		} catch (Exception e) {
+//			System.err.println("Order Failed - " + "unexpected behaviour");
+//			e.printStackTrace();
+//		}
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
+
+        new Stock();
+        List<Item> productList = Stock.getProductList();
+        for (Item item : productList) {
+            if (item instanceof Medicine) {
+                if (item instanceof Morphine) {
+                    medicines.add("Morphine > " + item.getName());
+                }
+                if (item instanceof Steroids) {
+                    medicines.add("Steroids > " + item.getName());
+                }
+                if (item instanceof Paracetamol) {
+                    medicines.add("Paracetamol > " + item.getName());
+                }
+            }
+
+            if (item instanceof PersonalCare) {
+                if (item instanceof Skincare) {
+                    personalCare.add("Skincare > " + item.getName());
+                }
+                if (item instanceof Shampoo) {
+                    personalCare.add("Shampoo > " + item.getName());
+                }
+                if (item instanceof Multivitamins) {
+                    personalCare.add("Multivitamins > " + item.getName());
+                }
+            }
+
+        }
+
+        // Create Image placeholder
+        Image lotfy = new Image("https://static.wikia.nocookie.net/disney/images/5/5d/Ludwig_Promo_Art_2.png/revision/latest?cb=20200629215712");
+        ImageView lotfyImage = new ImageView(lotfy);
+        lotfyImage.setFitWidth(120);
+        lotfyImage.setPreserveRatio(true);
+
         // Create radio buttons for category selection
         ToggleGroup categoryGroup = new ToggleGroup();
-        
+
         RadioButton medicineRadio = new RadioButton("Medicines");
         medicineRadio.setToggleGroup(categoryGroup);
-        medicineRadio.setSelected(true);
+        //medicineRadio.setSelected(true);
         medicineRadio.setUserData(medicines);
-        
-        RadioButton skincareRadio = new RadioButton("Skincare");
-        skincareRadio.setToggleGroup(categoryGroup);
-        skincareRadio.setUserData(skincare);
-        
-        RadioButton shampooRadio = new RadioButton("Shampoos");
-        shampooRadio.setToggleGroup(categoryGroup);
-        shampooRadio.setUserData(shampoos);
-        
+
+        RadioButton personalCareRadio = new RadioButton("Personal Care");
+        personalCareRadio.setToggleGroup(categoryGroup);
+        personalCareRadio.setUserData(personalCare);
+
         // Set up the product dropdown with category prefix
         productComboBox.setPromptText("Select a category first");
         productComboBox.setPrefWidth(300);
+        productComboBox.setVisible(false);
         //productComboBox.setItems(medicines); // Default to medicines
-        
-        // Handle category changes
+
+        //Hbox for the image
+        HBox hbox = new HBox(300);
+        hbox.getChildren().addAll(new VBox(5, new Label("Select Product Category"), medicineRadio, personalCareRadio), lotfyImage);
+
+        // Category change listener - FIXED: Works for both buttons
         categoryGroup.selectedToggleProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal != null) {
-                ObservableList<String> products = (ObservableList<String>) newVal.getUserData();
-                productComboBox.setItems(products);
-                productComboBox.setPromptText("Select " + ((RadioButton)newVal).getText());
+            productComboBox.setVisible(true);
+            if (newVal == medicineRadio) {
+                productComboBox.setItems(medicines);
+                productComboBox.setPromptText("Select Medicine");
+            } else if (newVal == personalCareRadio) {
+                productComboBox.setItems(personalCare);
+                productComboBox.setPromptText("Select Personal Care item");
             }
         });
-        
-        // Handle product selection
+        ArrayList<Order> cart = new ArrayList<>();
+        // Selection handler
         productComboBox.setOnAction(event -> {
+
             String selectedWithCategory = productComboBox.getValue();
             if (selectedWithCategory != null) {
-                // Extract pure product name (remove category prefix)
                 String selected = selectedWithCategory.split(" > ")[1];
-                
-                // Update count
-                selectionCounts.merge(selected, 1, Integer::sum);
-                updateHistoryDisplay();
-                
-                // Reset selection
-                productComboBox.getSelectionModel().clearSelection();
-                productComboBox.setValue(null);
+                try {
+                    Item chosen = Stock.findItemByName(selected);
+                    cartTextField.appendText(selected + "\n");
+                    cartTextField.appendText(chosen.getItemsInfo() + "\n");
+                    try {
+                        cart.add(new Order(chosen));
+                    } catch (Exceptions.InsufficientStockException ex2) {
+                        popUpWarning("Not enough Items available", ex2.getMessage());
+                    }
+                } catch (Exceptions.ItemNotFoundException warn) {
+                    popUpWarning("Item Not Found", warn.getMessage());
+                }
             }
+
         });
-        
+
+        Button clearButton = new Button("Clear Selection");
+        clearButton.setOnAction(e -> cartTextField.clear());
+        Button checkoutButton = new Button("Checkout");
+        checkoutButton.setOnAction(e -> {
+            Receipt bill = new Receipt(cart);
+            Stage checkoutStage = new Stage();
+            checkoutStage.setTitle("Checkout");
+            Label label = new Label("Total Price is: " + bill.getTotalPrice());
+            label.setAlignment(Pos.CENTER);
+            Scene scene = new Scene(label, 300, 150);
+            checkoutStage.setScene(scene);
+            checkoutStage.show();
+        });
+
         // Configure history display
-        historyArea.setPrefSize(350, 200);
-        historyArea.setEditable(false);
-        historyArea.setWrapText(true);
-        historyArea.setStyle("-fx-font-family: monospace;");
-        
+        cartTextField.setPrefSize(350, 200);
+        cartTextField.setEditable(false);
+        cartTextField.setWrapText(true);
+        cartTextField.setStyle("-fx-font-family: monospace;");
+
         // Create layout
         VBox root = new VBox(15);
         root.setPadding(new Insets(20));
         root.getChildren().addAll(
-            new Label("Select Product Category:"),
-            new VBox(5, medicineRadio, skincareRadio, shampooRadio),
-            new Separator(),
-            new Label("Available Products:"),
-            productComboBox,
-            new Separator(),
-            new Label("Selection History:"),
-            historyArea
+                hbox,
+                new Separator(),
+                new Label("Available Products"),
+                productComboBox,
+                new Separator(),
+                new Label("Cart"),
+                cartTextField,
+                clearButton,
+                checkoutButton
         );
-        
+
         // Set up scene
-        Scene scene = new Scene(root, 450, 550);
-        primaryStage.setTitle("Pharmacy Category Selector");
+        Scene scene = new Scene(root, 600, 550);
+        root.setStyle("-fx-background-color: #328E6E;");
+        primaryStage.setTitle("Pharmacy Information System");
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
-    
-    private void updateHistoryDisplay() {
-        StringBuilder historyText = new StringBuilder();
-        selectionCounts.forEach((name, count) -> {
-            historyText.append(String.format("%2dx %s%n", count, name));
-        });
-        historyArea.setText(historyText.toString());
-        historyArea.setScrollTop(Double.MAX_VALUE);
+
+    private void popUpWarning(String header, String content) {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

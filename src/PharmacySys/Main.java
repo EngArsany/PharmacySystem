@@ -17,48 +17,49 @@ public class Main {
         System.out.println("");
 
         // === Sort & Print All Items ===
-        System.out.println("============== SORTED Products (BY ID) ==============");
+        System.out.println("============== SORTED PRODUCTS (BY ID) ==============");
         Collections.sort(productList);
         for (int i = 0; i < productList.size(); i++) {
             System.out.println(
-                    (i+1) + ". " + productList.get(i).getName() + " - ID: " + productList.get(i).getID()
+                    (i + 1) + ". " + productList.get(i).getName() + " - ID: " + productList.get(i).getID()
             );
         }
         System.out.println("");
 
-        // === Sort & Print Medicines ===
+        // === Sort Medicine & PersonalCare items ===
         List<Medicine> medicines = new ArrayList<>();
+        List<PersonalCare> personalCareItems = new ArrayList<>();
         for (Item item : productList) {
             if (item instanceof Medicine) {
                 medicines.add((Medicine) item);
+            } else if (item instanceof PersonalCare) {
+                personalCareItems.add((PersonalCare) item);
             }
+
         }
-        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
         Collections.sort(medicines);  // Uses inherited compareTo()
+        Collections.sort(personalCareItems);  // Uses inherited compareTo()
+
+        //Print Medicine Items
+        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
         for (Medicine med : medicines) {
             med.describe();
             System.out.println("-------------------------------------------------");
         }
         System.out.println(" ");
 
-        // === Sort & Print PersonalCare ===
-        List<PersonalCare> personalCareItems = new ArrayList<>();
-        for (Item item : productList) {
-            if (item instanceof PersonalCare) {
-                personalCareItems.add((PersonalCare) item);
-            }
-        }
-        Collections.sort(personalCareItems);  // Uses inherited compareTo()
+        // === Print PersonalCare ===
         System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
         for (PersonalCare pc : personalCareItems) {
             pc.describe();
             System.out.println("-------------------------------------------------");
 
         }
+        System.out.println(" ");
 
         // try - catch block for ordering and printing recipt
         try {
-            System.out.println("Processing Order");
+            System.out.println("Processing Order 1");
 
             // Create order array - note the exact product names must match (case-insensitive)
             ArrayList<Order> order1 = new ArrayList<>(List.of(new Order("Morphine", 10),

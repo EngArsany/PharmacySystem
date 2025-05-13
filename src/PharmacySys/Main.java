@@ -16,6 +16,16 @@ public class Main {
         System.out.println("           ===========================");
         System.out.println("");
 
+        // === Sort & Print All Items ===
+        System.out.println("============== SORTED Products (BY ID) ==============");
+        Collections.sort(productList);
+        for (int i = 0; i < productList.size(); i++) {
+            System.out.println(
+                    (i+1) + ". " + productList.get(i).getName() + " - ID: " + productList.get(i).getID()
+            );
+        }
+        System.out.println("");
+
         // === Sort & Print Medicines ===
         List<Medicine> medicines = new ArrayList<>();
         for (Item item : productList) {

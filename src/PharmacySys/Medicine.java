@@ -36,9 +36,9 @@ public abstract class Medicine extends Item implements Dosable {
     @Override // From Item Class
     public void describe() {
         super.describe();
+        //Polymorphism
         System.out.println("Dosage Instructions: " + this.getDosageInstructions());
         System.out.println("Administration Route: " + this.getAdministrationRoute());
-
     }
 
 }

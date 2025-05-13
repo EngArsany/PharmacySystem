@@ -40,6 +40,9 @@ public class Main {
         System.out.println("============== SORTED MEDICINES (BY ID) ==============");
         for (Medicine med : medicines) {
             med.describe(); //Uses polymorphism
+            if(med instanceof Scheduled){
+                System.out.println("Need doctor's permission");
+            }
             System.out.println("-------------------------------------------------");
         }
         System.out.println(" ");

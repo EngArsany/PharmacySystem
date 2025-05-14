@@ -43,14 +43,14 @@ public abstract class Item implements Comparable<Item> {
     // Method to reduce stock when ordering
     public void decreaseStock(int quantity) throws Exceptions.InsufficientStockException {
         if (quantity <= 0) { // if quantity is negative
-            throw new IllegalArgumentException("Quantity must be a positive number. You entered: " + quantity);
+            throw new IllegalArgumentException("Quantity of " + this.getName() + " must be a positive number. You entered: " + quantity);
         }
         if (quantity > stock) { // if quantity  > stock
             throw new Exceptions.InsufficientStockException(
                     "Insufficient stock. Requested: " + quantity + ", Available: " + stock
             );
         }
-        this.stock -= quantity;
+        this.stock -= quantity; //implementation
     }
 
     // Utility method to describe the item

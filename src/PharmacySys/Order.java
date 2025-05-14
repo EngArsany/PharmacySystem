@@ -16,10 +16,9 @@ public class Order {
 			
 		// Create new order
 		this.quantity = quantity;
+                item.decreaseStock(quantity);
 		this.OrderPrice = item.getPrice() * quantity;
 
-		// Exception handling if quantity > stock
-		item.decreaseStock(quantity);
 	}
 
 	public double getOrderPrice() {
@@ -40,9 +39,9 @@ public class Order {
 
 	public void describeOrder() {
 		System.out.println("Item Ordered: " + item.getName());
-		System.out.println("Quantity Ordered: " + quantity);
+		System.out.println("Quantity Ordered: " + this.quantity);
 		System.out.println("Price per Unit: " + item.getPrice() + " EGP");
-		System.out.println("Subtotal Price: " + OrderPrice + " EGP");
+		System.out.println("Subtotal Price: " + this.OrderPrice + " EGP");
 
 	}
 }

@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    static List<Item> productList;
 
     public static void main(String[] args) {
         // intializing stock
         new Stock();
-        productList = Stock.getProductList();
         //Encapsulation: all data and methods related to the stock is in the Stock class
 
         //Program Header
@@ -17,12 +15,6 @@ public class Main {
         System.out.println("           ===========================");
         System.out.println("");
 
-        // Print sorted product list using describe() methods according to ID
-        // === Sort & Print All Items in short form ===
-        Stock.viewProductList();    //Short list to check sorting
-        Stock.describeList();   //Long list to check inheritance and polymorphism
-
-        
         //== Order #1 ==
         // try - catch block for ordering and printing recipt
         try {
@@ -48,9 +40,6 @@ public class Main {
             //Use multicatch to reduce redundancy
             System.err.println("Order Failed - " + e.getMessage());
         }
-        
-        //=== To Review Stock ===
-        Stock.viewProductList();    //Short list to check sorting
 
 
         // taking order #2
@@ -67,6 +56,12 @@ public class Main {
         } catch (Exceptions.ItemNotFoundException | Exceptions.InsufficientStockException | IllegalArgumentException e) {
             System.err.println("Order Failed - " + e.getMessage());
         }
+
+        // Print sorted product list using describe() methods according to ID
+        // === Sort & Print All Items in short form ===
+        Stock.viewProductList();    //Short list to check sorting
+        Stock.describeList();   //Long list to check inheritance and polymorphism
+
     }
 
 }

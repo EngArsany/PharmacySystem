@@ -26,13 +26,6 @@ public abstract class Medicine extends Item implements Dosable {
         return adminstrationRoute;
     }
 
-    // Check if the medicine is safe based on patient's age
-    @Override //overrides dosable interface
-    public boolean isDosageSafeForAge(int ageInYears) {
-        // Dosable Interface method
-        return ageInYears >= this.getMinimumAge();
-    }
-
     @Override // From Item Class
     public void describe() {
         super.describe();

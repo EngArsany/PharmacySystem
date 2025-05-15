@@ -8,15 +8,10 @@ public class Order {
 
 	public Order(String itemName, int quantity) throws Exceptions.InsufficientStockException, Exceptions.ItemNotFoundException { // declared that it will throw an exception
 
-		// Add exception handling if the item is not in the list (stock)
-		this.item = Stock.findItemByName(itemName);
-		if (this.item == null) {
-			throw new Exceptions.ItemNotFoundException("Item with name '" + itemName + "' not found in stock.");
-		}
-			
 		// Create new order
+		this.item = Stock.findItemByName(itemName); // Add exception handling if the item is not in the list (stock)
 		this.quantity = quantity;
-                item.decreaseStock(quantity);
+		item.decreaseStock(quantity); // threw exception in item class if there is a problem in quantity
 		this.OrderPrice = item.getPrice() * quantity;
 
 	}

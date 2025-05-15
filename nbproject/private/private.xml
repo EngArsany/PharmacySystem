@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/ASU%20Engineering/Semesters/Junior/Spring%2025/CSE%20231/Project/PharmacySystem/src/PharmacySys/Receipt.java</file>
-            <file>file:/D:/Projects/ASU%20Engineering/Semesters/Junior/Spring%2025/CSE%20231/Project/PharmacySystem/src/PharmacySys/Order.java</file>
-            <file>file:/D:/Projects/ASU%20Engineering/Semesters/Junior/Spring%2025/CSE%20231/Project/PharmacySystem/src/PharmacySys/Main.java</file>
-            <file>file:/D:/Projects/ASU%20Engineering/Semesters/Junior/Spring%2025/CSE%20231/Project/PharmacySystem/src/PharmacySys/Dosable.java</file>
+            <file>file:/D:/PharmacySystem/src/PharmacySys/Stock.java</file>
+            <file>file:/D:/PharmacySystem/src/PharmacySys/Exceptions.java</file>
+            <file>file:/D:/PharmacySystem/src/PharmacySys/Item.java</file>
+            <file>file:/D:/PharmacySystem/src/PharmacySys/Main.java</file>
+            <file>file:/D:/PharmacySystem/src/PharmacySys/Order.java</file>
         </group>
     </open-files>
 </project-private>

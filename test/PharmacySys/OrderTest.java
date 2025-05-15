@@ -38,17 +38,26 @@ public class OrderTest {
 		assertTrue(e.getMessage().contains("Insufficient stock"));
 	}
 
-	// Test 4: Does it calculate the price correctly?
+	// Test 4: Does it throw an exception when quantity is negative?
+	@Test
+	public void testNegativeQuantity() {
+		Exception e = assertThrows(IllegalArgumentException.class, () -> {
+			new Order("Panadol", -3); // Invalid: negative quantity
+		});
+		assertTrue(e.getMessage().contains("must be a positive number")); // Optional: validate message
+	}
+
+	// Test 5: Does it calculate the price correctly?
 	@Test
 	public void testPriceCalculation() throws Exception {
 		Order order1 = new Order("Panadol", 3);
-		assertEquals(38.25, order1.getOrderPrice(),0.001); // 12.75 * 3
+		assertEquals(38.25, order1.getOrderPrice(), 0.001); // 12.75 * 3
 
 		Order order2 = new Order("Tylenol", 4);
-		assertEquals(38.00, order2.getOrderPrice(),0.001); // 9.50 * 4
+		assertEquals(38.00, order2.getOrderPrice(), 0.001); // 9.50 * 4
 	}
 
-	// Test 5: Does it reduce the stock correctly?
+	// Test 6: Does it reduce the stock correctly?
 	@Test
 	public void testDecreaseItem() throws Exception {
 		Item panadolBefore = Stock.findItemByName("Panadol");
@@ -59,4 +68,5 @@ public class OrderTest {
 		Item panadolAfter = Stock.findItemByName("Panadol");
 		assertEquals(initialStock - 5, panadolAfter.getStock()); // should return 95
 	}
+
 }

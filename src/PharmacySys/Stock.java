@@ -46,7 +46,7 @@ public class Stock {
                 return product;
             }
         }
-        throw new Exceptions.ItemNotFoundException("Item '" + name + "' not found in stock"); // handled here and in order class also
+        throw new Exceptions.ItemNotFoundException("Item '" + name + "' not found in stock"); // handled here 
     }
 
     public static void viewProductList() {

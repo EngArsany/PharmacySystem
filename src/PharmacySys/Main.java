@@ -24,7 +24,7 @@ public class Main {
             ArrayList<Order> order1 = new ArrayList<>(List.of(
                     new Order("Morphine", 10),
                     new Order("steroids", 6),
-                    new Order("Panadol", 6),
+                    new Order("Panadol", 10),
                     new Order("Tylenol", 6),
                     new Order("VitalBoost", 6),
                     new Order("EnergyPlus", 6),
@@ -49,7 +49,7 @@ public class Main {
             // Create order array - note the exact product names must match (case-insensitive)
             ArrayList<Order> order2 = new ArrayList<>();
             order2.add(new Order("panadol", 2));
-            order2.add(new Order("clear", 1));
+            order2.add(new Order("clear", -1));
 
             Receipt receipt2 = new Receipt(order2);
             receipt2.printReceipt();

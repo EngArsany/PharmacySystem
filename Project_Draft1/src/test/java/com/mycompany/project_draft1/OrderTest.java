@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package com.mycompany.project_draft1;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
 
 public class OrderTest {
 
@@ -66,7 +63,7 @@ public class OrderTest {
 	public void testDecreaseItem() throws Exception {
 		Item panadolBefore = Stock.findItemByName("Panadol");
 		int initialStock = panadolBefore.getStock();// it saves the number of pandols found in stock in intialStock = 100 
-
+ 
 		new Order("Panadol", 5); // Ordering 5 panadols
 
 		Item panadolAfter = Stock.findItemByName("Panadol");

@@ -1,7 +1,7 @@
 package com.mycompany.project_draft1;
 
 // Abstract class representing a general item in the pharmacy system
-public abstract class Item{
+public abstract class Item implements Comparable<Item>{
 
 	// Basic attributes of any item
 	private String name;
@@ -67,5 +67,8 @@ public abstract class Item{
                      public String getItemsInfo(){
                          return  "Price: " + this.getPrice() +" ID: " + this.getID() +" Qty: " + this.getStock() +" Min. Age: " + this.getMinimumAge() ;
         }
-
+    @Override
+    public int compareTo(Item other) {
+        return this.getID().compareTo(other.getID());  // Sort Item instances by ID
+    }
 }

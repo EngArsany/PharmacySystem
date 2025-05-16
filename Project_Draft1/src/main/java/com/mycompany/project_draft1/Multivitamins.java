@@ -26,10 +26,6 @@ public class Multivitamins extends PersonalCare implements SuitableForChildren, 
 		return "Skin"; // Always
 	}
 
-	@Override //overrides dosable interface
-	public boolean isDosageSafeForAge(int age) {
-		return true; // Always safe in this simplified version
-	}
         public String getItemsInfo(){
         return super.getItemsInfo() +" Effective Substance: " +this.getEffectiveSubstance();
         }

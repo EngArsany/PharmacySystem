@@ -2,62 +2,54 @@ package com.mycompany.project_draft1;
 
 public class Order {
 
-	private Item item;
-	private double OrderPrice;
-	private int quantity;
+    private Item item;
+    private double OrderPrice;
+    private int quantity;
 
-	public Order(String itemName, int quantity) throws Exceptions.InsufficientStockException, Exceptions.ItemNotFoundException { // declared that it will throw an exception
+    public Order(String itemName, int quantity) throws Exceptions.InsufficientStockException, Exceptions.ItemNotFoundException { // declared that it will throw an exception
 
-		// Add exception handling if the item is not in the list (stock)
-		this.item = Stock.findItemByName(itemName);
-		if (this.item == null) {
-			throw new Exceptions.ItemNotFoundException("Item with name '" + itemName + "' not found in stock.");
-		}
-			
-		// Create new order
-		this.quantity = quantity;
-		this.OrderPrice = item.getPrice() * quantity;
+        // Create new order
+        this.item = Stock.findItemByName(itemName); // Add exception handling if the item is not in the list (stock)
+        this.quantity = quantity;
+        item.decreaseStock(quantity); // threw exception in item class if there is a problem in quantity
+        this.OrderPrice = item.getPrice() * quantity;
 
-		// Exception handling if quantity > stock
-		item.decreaseStock(quantity);
-	}
+    }
 
-        public Order(Item item) throws Exceptions.InsufficientStockException, Exceptions.ItemNotFoundException { // declared that it will throw an exception
+    public Order(Item item) throws Exceptions.InsufficientStockException, Exceptions.ItemNotFoundException { // declared that it will throw an exception
 
-		// Add exception handling if the item is not in the list (stock)
-		this.item = item;
-		if (this.item == null) {
-			throw new Exceptions.ItemNotFoundException("Item with name '" + item.getName() + "' not found in stock.");
-		}
-			
-		// Create new order
-		this.quantity = 1;
-		this.OrderPrice = item.getPrice();
+        // Add exception handling if the item is not in the list (stock)
+        this.item = item;
 
-		// Exception handling if quantity > stock
-		item.decreaseStock(quantity);
-	}
-	public double getOrderPrice() {
-		return OrderPrice;
-	}
+        // Create new order
+        this.quantity = 1;
+        this.OrderPrice = item.getPrice();
 
-	public int getQuantity() {
-		return quantity;
-	}
+        // Exception handling if quantity > stock
+        item.decreaseStock(quantity);
+    }
 
-	public Item getItem() {
-		return item;
-	}
+    public double getOrderPrice() {
+        return OrderPrice;
+    }
 
-	public String getItemName() {
-		return item.getName();
-	}
+    public int getQuantity() {
+        return quantity;
+    }
 
-	public void describeOrder() {
-		System.out.println("Item Ordered: " + item.getName());
-		System.out.println("Quantity Ordered: " + quantity);
-		System.out.println("Price per Unit: " + item.getPrice() + " EGP");
-		System.out.println("Subtotal Price: " + OrderPrice + " EGP");
+    public Item getItem() {
+        return item;
+    }
 
-	}
+    public String getItemName() {
+        return item.getName();
+    }
+
+    public void describeOrder() {
+        System.out.println("Item Ordered: " + item.getName());
+        System.out.println("Quantity Ordered: " + this.quantity);
+        System.out.println("Price per Unit: " + item.getPrice() + " EGP");
+        System.out.println("Subtotal Price: " + this.OrderPrice + " EGP");
+
+    }
 }

@@ -7,6 +7,4 @@ public interface Dosable {
 
 	String getAdministrationRoute(); // e.g., "Oral", "Topical", "Injection" boolean
 
-	boolean isDosageSafeForAge(int age); // Age-specific safety check
-
 }

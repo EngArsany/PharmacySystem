@@ -1,22 +1,16 @@
 package com.mycompany.project_draft1;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.application.Platform;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -28,9 +22,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import static javafx.scene.text.Font.font;
 
 /**
  * JavaFX App
@@ -47,134 +38,61 @@ public class App extends Application {
 
     public static void main(String[] args) {
         // intializing stock
+        // intializing stock
         new Stock();
-        List<Item> productList = Stock.getProductList();
+        //Encapsulation: all data and methods related to the stock is in the Stock class
 
-        // Print sorted product list using describe() methods according to ID
-        System.out.println("============== PHARMACY STOCK ITEMS ===============");
+        //Program Header
+        System.out.println("============== PHARMACY STOCK Program ===============");
         System.out.println("           ===========================");
         System.out.println("");
 
-        // === Sort & Print Medicines ===
-        List<Medicine> medicines = new ArrayList<>();
-        for (Item item : productList) {
-            if (item instanceof Medicine) {
-                medicines.add((Medicine) item);
-            }
-        }
-        Collections.sort(medicines);  // Uses Medicine's compareTo()
-        System.out.println("============== SORTED MEDICINES (BY ID) ==============");
-        for (Medicine med : medicines) {
-            med.describe();
-        }
-        System.out.println(" ");
-        // === Sort & Print PersonalCare ===
-        List<PersonalCare> personalCareItems = new ArrayList<>();
-        for (Item item : productList) {
-            if (item instanceof PersonalCare) {
-                personalCareItems.add((PersonalCare) item);
-            }
-        }
-        Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
-        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
-        for (PersonalCare pc : personalCareItems) {
-            pc.describe();
-        }
-
+        //== Order #1 ==
         // try - catch block for ordering and printing recipt
-//		try {
-//			System.out.println("Processing Order");
-//
-//			// Create order array - note the exact product names must match (case-insensitive)
-//			Order[] order1 = {
-//				new Order("Morphine", 10),
-//				new Order("Steroids", 6),
-//				new Order("Panadol", 6),
-//				new Order("Tylenol", 6),
-//				new Order("VitalBoost", 6),
-//				new Order("EnergyPlus", 6),
-//				new Order("SilkSmooth", 6),
-//				new Order("Clear", 6),
-//				new Order("GlowGuard", 6),
-//				new Order("ClearTone", 6)
-//			};
-//
-//			// Process receipt
-//			Receipt receipt1 = new Receipt(order1);
-//			receipt1.printReceipt();
-//
-//		} catch (Exceptions.ItemNotFoundException e) {
-//			System.err.println("Order Failed - " + e.getMessage());
-//			// You could add recovery logic here, like suggesting similar products
-//		} catch (Exceptions.InsufficientStockException e) {
-//			System.err.println("Order Failed - " + e.getMessage());
-//			// Could suggest partial fulfillment or backorder
-//		} catch (IllegalArgumentException e) {
-//			System.err.println("Order Failed - " + e.getMessage());
-//		} catch (Exception e) {
-//			System.err.println("Order Failed - " + "unexpected behaviour");
-//			e.printStackTrace();
-//		}
-//
-//		
-//		
-//		/// Print product list using describe() methods
-//		System.out.println("============== PHARMACY STOCK ITEMS ===============");
-//		System.out.println("           ===========================");
-//		System.out.println("");
-//
-//		// === Sort & Print Medicines ===
-//		for (Item item : productList) {
-//			if (item instanceof Medicine) {
-//				medicines.add((Medicine) item);
-//			}
-//		}
-//		
-//		Collections.sort(medicines);  // Uses Medicine's compareTo()
-//		System.out.println("============== SORTED MEDICINES (BY ID) ==============");
-//		for (Medicine med : medicines) {
-//			med.describe();
-//		}
-//		System.out.println(" ");
-//		
-        // === Sort & Print PersonalCare ===
-        for (Item item : productList) {
-            if (item instanceof PersonalCare) {
-                personalCareItems.add((PersonalCare) item);
-            }
+        try {
+            System.out.println("=============== PROCESSING ORDER 1 ===============");
+
+            // Create order array
+            ArrayList<Order> order1 = new ArrayList<>(List.of(
+                    new Order("Morphine", 10),
+                    new Order("steroids", 6),
+                    new Order("Panadol", 10),
+                    new Order("Tylenol", 6),
+                    new Order("VitalBoost", 6),
+                    new Order("EnergyPlus", 6),
+                    new Order("SilkSmooth", 6),
+                    new Order("Clear", 6),
+                    new Order("GlowGuard", 6),
+                    new Order("ClearTone", 6)));
+
+            // Process receipt
+            Receipt receipt1 = new Receipt(order1);
+            receipt1.printReceipt();
+        } catch (Exceptions.ItemNotFoundException | Exceptions.InsufficientStockException | IllegalArgumentException e) {
+            //Use multicatch to reduce redundancy
+            System.err.println("Order Failed - " + e.getMessage());
         }
 
-        Collections.sort(personalCareItems);  // Uses PersonalCare's compareTo()
-        System.out.println("=========== SORTED PERSONAL CARE (BY ID) ===========");
-        for (PersonalCare pc : personalCareItems) {
-            pc.describe();
-        }
 
         // taking order #2
-//		try {
-//			System.out.println("Processing Order");
-//
-//			// Create order array - note the exact product names must match (case-insensitive)
-//			Order[] order2 = {
-//				new Order("panadol", 2),
-//				new Order("clear", 1)
-//			};
-//
-//			Receipt receipt2 = new Receipt(order2);
-//			receipt2.printReceipt();
-//
-//		} catch (Exceptions.ItemNotFoundException e) {
-//			System.err.println("Order Failed - " + e.getMessage());
-//			// You could add recovery logic here, like suggesting similar products
-//		} catch (Exceptions.InsufficientStockException e) {
-//			System.err.println("Order Failed - " + e.getMessage());
-//			// Could suggest partial fulfillment or backorder
-//		} catch (IllegalArgumentException e) {
-//			System.err.println("Order Failed - " + e.getMessage());
-//		} catch (Exception e) {
-//			System.err.println("Order Failed - " + "unexpected behaviour");
-//			e.printStackTrace();
-//		}
+        try {
+            System.out.println("=============== PROCESSING ORDER 2 ===============");
+
+            // Create order array - note the exact product names must match (case-insensitive)
+            ArrayList<Order> order2 = new ArrayList<>();
+            order2.add(new Order("panadol", 2));
+            order2.add(new Order("clear", -1));
+
+            Receipt receipt2 = new Receipt(order2);
+            receipt2.printReceipt();
+        } catch (Exceptions.ItemNotFoundException | Exceptions.InsufficientStockException | IllegalArgumentException e) {
+            System.err.println("Order Failed - " + e.getMessage());
+        }
+
+        // Print sorted product list using describe() methods according to ID
+        // === Sort & Print All Items in short form ===
+        Stock.viewProductList();    //Short list to check sorting
+        Stock.describeList();   //Long list to check inheritance and polymorphism
         launch(args);
     }
 

@@ -45,4 +45,8 @@ public abstract class Medicine extends Item implements Dosable, Comparable<Medic
 	public int compareTo(Medicine other) {
 		return this.getID().compareTo(other.getID());  // Sort Medicine instances by ID
 	}
+        public String getItemsInfo(){
+        
+        return super.getItemsInfo() +" Instructions: " +this.getDosageInstructions();
+        }
 }

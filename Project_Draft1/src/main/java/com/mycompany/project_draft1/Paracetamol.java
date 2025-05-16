@@ -21,5 +21,9 @@ public class Paracetamol extends Medicine {
 		super.describe();
 		System.out.println("Unit amount: " + unitAmount);
 	}
+        public String getItemsInfo(){
+        
+        return super.getItemsInfo() +" Unit amount in mg: "+ this.getUnitAmount();
+        }
 
 }

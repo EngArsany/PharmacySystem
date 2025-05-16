@@ -18,5 +18,8 @@ public class Shampoo extends PersonalCare implements SuitableForChildren {
 		super.describe();
 		System.out.println("Flavour: " + flavor);
 	}
+        public String getItemsInfo(){
+        return super.getItemsInfo() +" Flavor: " +this.getflavor();
+        }
 
 }

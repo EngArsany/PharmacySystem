@@ -25,4 +25,7 @@ public abstract class PersonalCare extends Item implements Comparable<PersonalCa
 	public int compareTo(PersonalCare other) {
 		return this.getID().compareTo(other.getID());  // Sort PersonalCare instances by ID
 	}
+        public String getItemsInfo(){
+        return super.getItemsInfo() +" Gender " +this.getGender();
+        }
 }

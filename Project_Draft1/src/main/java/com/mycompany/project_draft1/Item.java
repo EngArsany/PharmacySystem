@@ -52,6 +52,9 @@ public abstract class Item{
 		}
 		this.stock -= quantity;
 	}
+                     public void increaseStock(){
+                     this.stock++;
+                     }
 
 	// Utility method to describe the item
 	public void describe() {

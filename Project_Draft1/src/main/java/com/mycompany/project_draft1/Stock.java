@@ -23,7 +23,7 @@ public class Stock {
 		products.add(new Steroids("03ST013"));
 
 		// Paracetamol
-		products.add(new Paracetamol(12.75, "01PA001", "Panadol", 6, 100, "Oral", "Take 1 tablet every 6 hours", 20));
+		products.add(new Paracetamol(12.75, "01PA001", "Panadol", 6, 1, "Oral", "Take 1 tablet every 6 hours", 20));
 		products.add(new Paracetamol(9.50, "01PA002", "Tylenol", 10, 80, "Oral", "Take 2 tablets after meals", 16));
 
 		// Multivitamins

@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +29,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import static javafx.scene.text.Font.font;
 
 /**
  * JavaFX App
@@ -179,11 +181,11 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        new Stock();
+        new Stock(); //Instantiate Stock to use productList
         List<Item> productList = Stock.getProductList();
         for (Item item : productList) {
-            if (item instanceof Medicine) {
-                if (item instanceof Morphine) {
+            if (item instanceof Medicine) { // Categorizes some productList items into "Medecine" main category 
+                if (item instanceof Morphine) {// Further Ctaegorizes the items into more sub-categories
                     medicines.add("Morphine > " + item.getName());
                 }
                 if (item instanceof Steroids) {
@@ -194,7 +196,7 @@ public class App extends Application {
                 }
             }
 
-            if (item instanceof PersonalCare) {
+            if (item instanceof PersonalCare) {// Categorizes some productList items into "Personal Care" main category
                 if (item instanceof Skincare) {
                     personalCare.add("Skincare > " + item.getName());
                 }
@@ -209,17 +211,16 @@ public class App extends Application {
         }
 
         // Create Image placeholder
-        Image lotfy = new Image("https://static.wikia.nocookie.net/disney/images/5/5d/Ludwig_Promo_Art_2.png/revision/latest?cb=20200629215712");
-        ImageView lotfyImage = new ImageView(lotfy);
-        lotfyImage.setFitWidth(120);
-        lotfyImage.setPreserveRatio(true);
+        Image logo = new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5V7nyZWgF00UQFIoRmQ-1dbl8NKKXyPMnSA&s");
+        ImageView logoImage = new ImageView(logo);
+        logoImage.setFitWidth(120);
+        logoImage.setPreserveRatio(true);
 
         // Create radio buttons for category selection
         ToggleGroup categoryGroup = new ToggleGroup();
 
         RadioButton medicineRadio = new RadioButton("Medicines");
         medicineRadio.setToggleGroup(categoryGroup);
-        //medicineRadio.setSelected(true);
         medicineRadio.setUserData(medicines);
 
         RadioButton personalCareRadio = new RadioButton("Personal Care");
@@ -230,15 +231,14 @@ public class App extends Application {
         productComboBox.setPromptText("Select a category first");
         productComboBox.setPrefWidth(300);
         productComboBox.setVisible(false);
-        //productComboBox.setItems(medicines); // Default to medicines
 
-        //Hbox for the image
+        //Hbox for the image and Radio buttons
         HBox hbox = new HBox(300);
-        hbox.getChildren().addAll(new VBox(5, new Label("Select Product Category"), medicineRadio, personalCareRadio), lotfyImage);
+        hbox.getChildren().addAll(new VBox(15, new Label("Select Product Category"), medicineRadio, personalCareRadio), logoImage);
 
-        // Category change listener - FIXED: Works for both buttons
+        // Category change listener
         categoryGroup.selectedToggleProperty().addListener((obs, oldVal, newVal) -> {
-            productComboBox.setVisible(true);
+            productComboBox.setVisible(true); //Combo box appears when user selects a category from radio button
             if (newVal == medicineRadio) {
                 productComboBox.setItems(medicines);
                 productComboBox.setPromptText("Select Medicine");
@@ -246,6 +246,7 @@ public class App extends Application {
                 productComboBox.setItems(personalCare);
                 productComboBox.setPromptText("Select Personal Care item");
             }
+            
         });
         ArrayList<Order> cart = new ArrayList<>();
         // Selection handler
@@ -256,22 +257,27 @@ public class App extends Application {
                 String selected = selectedWithCategory.split(" > ")[1];
                 try {
                     Item chosen = Stock.findItemByName(selected);
-                    cartTextField.appendText(selected + "\n");
-                    cartTextField.appendText(chosen.getItemsInfo() + "\n");
+                    productComboBox.setValue(null);
                     try {
                         cart.add(new Order(chosen));
+                        cartTextField.appendText(selected + "\n");
+                    cartTextField.appendText(chosen.getItemsInfo() + "\n");
+                    
                     } catch (Exceptions.InsufficientStockException ex2) {
                         popUpWarning("Not enough Items available", ex2.getMessage());
                     }
-                } catch (Exceptions.ItemNotFoundException warn) {
-                    popUpWarning("Item Not Found", warn.getMessage());
-                }
+                } catch (Exceptions.ItemNotFoundException warn) {}
             }
 
         });
 
         Button clearButton = new Button("Clear Selection");
-        clearButton.setOnAction(e -> cartTextField.clear());
+        clearButton.setOnAction(e -> {
+            cartTextField.clear();
+            for (Order order : cart){
+            order.getItem().increaseStock();
+            }
+                    });
         Button checkoutButton = new Button("Checkout");
         checkoutButton.setOnAction(e -> {
             Receipt bill = new Receipt(cart);
@@ -283,8 +289,8 @@ public class App extends Application {
             checkoutStage.setScene(scene);
             checkoutStage.show();
         });
-
-        // Configure history display
+      
+        // Configure cart display
         cartTextField.setPrefSize(350, 200);
         cartTextField.setEditable(false);
         cartTextField.setWrapText(true);
@@ -307,13 +313,14 @@ public class App extends Application {
 
         // Set up scene
         Scene scene = new Scene(root, 600, 550);
-        root.setStyle("-fx-background-color: #328E6E;");
+        root.setStyle("-fx-background-color: #50C878;");
         primaryStage.setTitle("Pharmacy Information System");
         primaryStage.setScene(scene);
         primaryStage.show();
 
     }
 
+    
     private void popUpWarning(String header, String content) {
         Alert alert = new Alert(AlertType.WARNING);
         alert.setTitle("Warning");

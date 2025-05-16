@@ -18,5 +18,8 @@ public class Skincare extends PersonalCare {
 		super.describe();
 		System.out.println("Routine: " + routine);
 	}
+        public String getItemsInfo(){
+        return super.getItemsInfo() +" Routine " +this.getRoutine();
+        }
 
 }

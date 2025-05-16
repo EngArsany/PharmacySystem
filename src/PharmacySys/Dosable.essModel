@@ -1,0 +1,100 @@
+[Box: ::PharmacySys - ::<<Unknown>>::Comparable]
+X=601
+Y=413
+
+[Box: ::PharmacySys - ::<<Unknown>>::Exception]
+X=635
+Y=40
+Visible=0
+
+[Box: ::PharmacySys - ::PharmacySys::Dosable]
+X=447
+Y=849
+
+[Box: ::PharmacySys - ::PharmacySys::Exceptions]
+X=20
+Y=252
+Visible=0
+
+[Box: ::PharmacySys - ::PharmacySys::Exceptions.InsufficientStockException]
+X=132
+Y=226
+Visible=0
+
+[Box: ::PharmacySys - ::PharmacySys::Exceptions.ItemNotFoundException]
+X=381
+Y=226
+Visible=0
+
+[Box: ::PharmacySys - ::PharmacySys::Item]
+X=601
+Y=252
+
+[Box: ::PharmacySys - ::PharmacySys::Main]
+X=20
+Y=40
+Visible=0
+
+[Box: ::PharmacySys - ::PharmacySys::Medicine]
+X=840
+Y=367
+
+[Box: ::PharmacySys - ::PharmacySys::Morphine]
+X=1265
+Y=650
+
+[Box: ::PharmacySys - ::PharmacySys::Multivitamins]
+X=255
+Y=647
+
+[Box: ::PharmacySys - ::PharmacySys::Order]
+X=601
+Y=40
+
+[Box: ::PharmacySys - ::PharmacySys::OrderTest]
+X=942
+Y=71
+Visible=0
+
+[Box: ::PharmacySys - ::PharmacySys::Paracetamol]
+X=1060
+Y=650
+
+[Box: ::PharmacySys - ::PharmacySys::PersonalCare]
+X=319
+Y=438
+
+[Box: ::PharmacySys - ::PharmacySys::Receipt]
+X=239
+Y=201
+
+[Box: ::PharmacySys - ::PharmacySys::Scheduled]
+X=1060
+Y=836
+
+[Box: ::PharmacySys - ::PharmacySys::Shampoo]
+X=36
+Y=622
+
+[Box: ::PharmacySys - ::PharmacySys::Skincare]
+X=456
+Y=620
+
+[Box: ::PharmacySys - ::PharmacySys::Steroids]
+X=855
+Y=650
+
+[Box: ::PharmacySys - ::PharmacySys::Stock]
+X=311
+Y=82
+
+[Box: ::PharmacySys - ::PharmacySys::SuitableForChildren]
+X=176
+Y=836
+
+[Diagram: ::PharmacySys]
+OffsetX=24
+OffsetY=193
+Visibility=0
+ShowAssoc=1
+
